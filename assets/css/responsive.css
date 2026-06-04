@@ -1,0 +1,271 @@
+/* ============================================================
+   SIGNBRIDGE AI — RESPONSIVE STYLES
+   responsive.css · Mobile-first breakpoints
+   ============================================================ */
+
+/* ── 1280px+ (XL) — default desktop styles in style.css ──── */
+
+/* ── 1024px (LG) ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root { --section-py: 80px; }
+
+  .nav-menu .nav-link:not(.nav-cta) { padding: 7px 9px; font-size: 0.82rem; }
+
+  .hero { padding: 90px 24px 56px; }
+  .hero-visual { width: 40%; opacity: 0.6; }
+
+  .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+  .tech-grid { grid-template-columns: repeat(3, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .acc-grid { grid-template-columns: repeat(2, 1fr); }
+  .cu-grid { grid-template-columns: repeat(2, 1fr); }
+  .academic-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; gap: 32px; }
+  .footer-grid > *:last-child { grid-column: 1 / -1; }
+
+  .delivery-grid { grid-template-columns: 1fr 1fr; }
+  .delivery-grid > *:last-child { grid-column: 1 / -1; }
+}
+
+/* ── 900px ───────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Navbar: hamburger visible */
+  .nav-menu {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: rgba(13,27,42,0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 16px 0 24px;
+    border-bottom: 1px solid rgba(0,212,255,0.1);
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
+  }
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-link {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 0;
+    font-size: 0.95rem;
+    border-left: 3px solid transparent;
+  }
+  .nav-link:hover { border-left-color: var(--cyan); }
+  .nav-link.nav-cta {
+    margin: 12px 24px 0;
+    width: calc(100% - 48px);
+    text-align: center;
+    border-radius: var(--radius-sm);
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 100px 24px 60px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-visual {
+    position: static;
+    transform: none;
+    width: 80%; max-width: 400px;
+    margin: 40px auto 0;
+    opacity: 0.9;
+  }
+  .hero-badges-row { justify-content: center; }
+  .hero-actions { justify-content: center; }
+  .hero-tech-strip { justify-content: center; }
+  .hero-scroll-indicator { display: none; }
+
+  /* Grids */
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-5 { grid-template-columns: repeat(3, 1fr); }
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .problem-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .diagrams-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Arch */
+  .arch-components { gap: 8px; }
+  .arch-comp { font-size: 0.78rem; padding: 4px 10px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > *:first-child { grid-column: 1 / -1; }
+}
+
+/* ── 768px (MD / Tablet) ────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --section-py: 64px; }
+  h1 { font-size: clamp(2rem, 7vw, 3rem); }
+  h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+
+  .container { padding: 0 18px; }
+  .section-header { margin-bottom: 44px; }
+
+  /* Cards */
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-5 { grid-template-columns: repeat(2, 1fr); }
+  .tech-grid { grid-template-columns: 1fr 1fr; }
+  .cu-grid { grid-template-columns: 1fr; }
+  .cu-card--full { grid-column: auto; }
+  .acc-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+  .diagrams-grid { grid-template-columns: 1fr; }
+  .academic-grid { grid-template-columns: 1fr 1fr; }
+  .delivery-grid { grid-template-columns: 1fr; }
+  .docs-grid { grid-template-columns: 1fr; }
+  .doc-card--featured { flex-direction: column; }
+  .problem-stats { grid-template-columns: 1fr 1fr; }
+
+  /* Tabs */
+  .benefit-content { flex-direction: column; }
+
+  /* Timeline */
+  .timeline-item { flex-direction: column; gap: 16px; }
+  .timeline-item::before { display: none; }
+
+  /* Pipeline */
+  .pipeline-connector { height: 12px; margin-left: 20px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-grid > *:first-child { grid-column: auto; }
+  .footer-grid > *:last-child { grid-column: auto; }
+
+  /* CTA */
+  .cta-actions { flex-direction: column; align-items: center; }
+
+  /* Contact */
+  .contact-form { padding: 28px 22px; }
+
+  /* Modules */
+  .modules-grid .grid-5 { grid-template-columns: 1fr 1fr; }
+
+  /* Hero */
+  .hero-visual { width: 100%; max-width: 320px; }
+  .kpi-badge { min-width: 76px; }
+  .kpi-num { font-size: 1.3rem; }
+}
+
+/* ── 600px ───────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  :root { --section-py: 52px; }
+
+  .hero { padding: 80px 18px 50px; }
+  .hero-title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  .hero-subtitle { font-size: 0.95rem; }
+  .hero-badges-row { gap: 10px; }
+  .hero-visual { display: none; }
+
+  /* Navbar */
+  .nav-logo-text { font-size: 1rem; }
+
+  /* Sections */
+  .section-desc { font-size: 0.92rem; }
+
+  /* Tabs header */
+  .tab-btn { font-size: 0.83rem; padding: 14px 10px; }
+  .tab-panel { padding: 28px 20px; }
+
+  /* Stats */
+  .problem-stats { grid-template-columns: 1fr; }
+  .stat-number { font-size: 2rem; }
+
+  /* Arch */
+  .arch-layer { padding: 20px 18px; }
+
+  /* Metrics */
+  .metric-card { padding: 18px 20px; }
+  .metric-value { font-size: 1.6rem; }
+
+  /* Lighthouse */
+  .lighthouse-grid { gap: 16px; }
+  .lighthouse-circle { width: 68px; height: 68px; }
+  .lighthouse-circle span { font-size: 1.1rem; }
+
+  /* KPI Badges */
+  .kpi-badge { min-width: 68px; padding: 10px 12px; }
+
+  /* Academic grid */
+  .academic-grid { grid-template-columns: 1fr; }
+
+  /* OE items */
+  .oe-item { padding: 16px 18px; }
+
+  /* WCAG badge */
+  .wcag-badge { flex-direction: column; text-align: center; gap: 14px; }
+
+  /* Back to top */
+  .back-to-top { bottom: 18px; right: 18px; width: 40px; height: 40px; }
+
+  /* grid-5 mobile */
+  .grid-5 { grid-template-columns: 1fr; }
+  .modules-grid .grid-5 { grid-template-columns: 1fr; }
+}
+
+/* ── 400px ───────────────────────────────────────────────────── */
+@media (max-width: 400px) {
+  :root { --section-py: 44px; }
+  .container { padding: 0 14px; }
+  .btn { font-size: 0.88rem; padding: 11px 20px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { text-align: center; }
+  .hero-badges-row { flex-wrap: wrap; justify-content: center; }
+
+  .tabs-header { flex-direction: column; }
+  .tab-btn { border-bottom: none; border-left: 2px solid transparent; text-align: left; }
+  .tab-btn.active { border-left-color: var(--cyan); }
+
+  .acc-grid { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 1920px+ (4K / wide screens) ────────────────────────────── */
+@media (min-width: 1600px) {
+  :root {
+    --container-max: 1400px;
+    --section-py: 112px;
+  }
+  h1 { font-size: 4.5rem; }
+  h2 { font-size: 3.2rem; }
+  .hero-title { font-size: 4.8rem; }
+  .grid-3 { gap: 32px; }
+  .tech-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .steps-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 2560px) {
+  :root { --container-max: 1800px; font-size: 18px; }
+}
+
+/* ── Print ───────────────────────────────────────────────────── */
+@media print {
+  .navbar, .back-to-top, .hero-scroll-indicator,
+  #particlesCanvas, .nav-progress { display: none !important; }
+  body { background: white; color: black; }
+  .section--dark { background: #f5f5f5; }
+  .card, .tech-card, .metric-card { border: 1px solid #ccc; }
+  a { color: #0050a0; }
+  .accent-cyan { color: #0050a0; }
+  .accent-green { color: #006040; }
+}

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 480" fill="none">
+  <!-- Glow backdrop -->
+  <ellipse cx="260" cy="240" rx="200" ry="180" fill="url(#heroGlow)" opacity="0.18"/>
+
+  <!-- Monitor / Screen frame -->
+  <rect x="80" y="60" width="360" height="260" rx="16" fill="#0a1520" stroke="#00D4FF" stroke-width="1.5"/>
+  <rect x="96" y="76" width="328" height="228" rx="8" fill="#060e18"/>
+  <!-- Screen glow inner -->
+  <rect x="96" y="76" width="328" height="228" rx="8" fill="url(#screenGlow)" opacity="0.3"/>
+
+  <!-- Hand silhouette (sign language) -->
+  <g transform="translate(200, 110)">
+    <!-- Palm -->
+    <rect x="20" y="90" width="80" height="28" rx="10" fill="#1a3a5c" stroke="#00D4FF" stroke-width="1.2"/>
+    <!-- Thumb -->
+    <rect x="8" y="75" width="16" height="40" rx="8" fill="#1a3a5c" stroke="#00D4FF" stroke-width="1.2"/>
+    <!-- Index finger -->
+    <rect x="26" y="30" width="16" height="68" rx="8" fill="#1a3a5c" stroke="#00D4FF" stroke-width="1.2"/>
+    <!-- Middle finger -->
+    <rect x="44" y="20" width="16" height="78" rx="8" fill="#00D4FF" stroke="#00D4FF" stroke-width="1.2" opacity="0.9"/>
+    <!-- Ring finger -->
+    <rect x="62" y="28" width="16" height="70" rx="8" fill="#1a3a5c" stroke="#00D4FF" stroke-width="1.2"/>
+    <!-- Pinky -->
+    <rect x="80" y="50" width="14" height="48" rx="7" fill="#1a3a5c" stroke="#00D4FF" stroke-width="1.2"/>
+    <!-- Landmark dots -->
+    <circle cx="16" cy="68" r="3" fill="#00D4FF"/>
+    <circle cx="34" cy="24" r="3" fill="#00FF9F"/>
+    <circle cx="52" cy="14" r="3" fill="#00D4FF"/>
+    <circle cx="70" cy="22" r="3" fill="#00FF9F"/>
+    <circle cx="87" cy="44" r="3" fill="#00D4FF"/>
+    <circle cx="34" cy="92" r="2.5" fill="#00FF9F" opacity="0.7"/>
+    <circle cx="52" cy="92" r="2.5" fill="#00D4FF" opacity="0.7"/>
+    <circle cx="70" cy="92" r="2.5" fill="#00FF9F" opacity="0.7"/>
+  </g>
+
+  <!-- Detection bounding box -->
+  <rect x="185" y="98" width="152" height="188" rx="6"
+        stroke="#00D4FF" stroke-width="1.5" stroke-dasharray="8,4" fill="none" opacity="0.6"/>
+  <!-- Corner accents -->
+  <path d="M185 115 L185 98 L202 98" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M320 115 L320 98 L303 98" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M185 269 L185 286 L202 286" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M320 269 L320 286 L303 286" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Label bubble -->
+  <rect x="338" y="148" width="80" height="46" rx="8" fill="#0D1B2A" stroke="#00D4FF" stroke-width="1.2"/>
+  <text x="378" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#00D4FF">HOLA</text>
+  <text x="378" y="184" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#00FF9F">93.7%</text>
+  <line x1="338" y1="171" x2="320" y2="171" stroke="#00D4FF" stroke-width="1.2"/>
+
+  <!-- Confidence bar -->
+  <rect x="338" y="202" width="80" height="6" rx="3" fill="#0a1520"/>
+  <rect x="338" y="202" width="75" height="6" rx="3" fill="url(#confBar)"/>
+
+  <!-- Translation text strip -->
+  <rect x="96" y="268" width="328" height="36" rx="0" fill="#0a2040" opacity="0.95"/>
+  <text x="112" y="292" font-family="Inter,sans-serif" font-size="13" fill="#00FF9F" font-weight="600">▶  HOLA MUNDO</text>
+  <text x="380" y="292" font-family="Inter,sans-serif" font-size="11" fill="#00D4FF">🔊 Síntesis</text>
+
+  <!-- MediaPipe landmark connections (web) -->
+  <g opacity="0.35">
+    <line x1="234" y1="200" x2="252" y2="154" stroke="#00D4FF" stroke-width="0.8"/>
+    <line x1="252" y1="154" x2="270" y2="144" stroke="#00D4FF" stroke-width="0.8"/>
+    <line x1="270" y1="144" x2="288" y2="152" stroke="#00D4FF" stroke-width="0.8"/>
+    <line x1="288" y1="152" x2="305" y2="174" stroke="#00D4FF" stroke-width="0.8"/>
+    <line x1="234" y1="200" x2="288" y2="152" stroke="#00FF9F" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <circle cx="234" cy="200" r="2.5" fill="#00D4FF"/>
+    <circle cx="252" cy="154" r="2.5" fill="#00FF9F"/>
+    <circle cx="270" cy="144" r="2.5" fill="#00D4FF"/>
+    <circle cx="288" cy="152" r="2.5" fill="#00FF9F"/>
+    <circle cx="305" cy="174" r="2.5" fill="#00D4FF"/>
+  </g>
+
+  <!-- Monitor base -->
+  <path d="M220 320 L300 320 L290 350 L230 350 Z" fill="#0a1520" stroke="#00D4FF" stroke-width="1.2"/>
+  <rect x="200" y="350" width="120" height="8" rx="4" fill="#0a1520" stroke="#00D4FF" stroke-width="1.2"/>
+
+  <!-- Floating stats badges -->
+  <g transform="translate(40, 130)">
+    <rect width="68" height="48" rx="8" fill="#0D1B2A" stroke="#00FF9F" stroke-width="1"/>
+    <text x="34" y="20" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#00FF9F">FPS</text>
+    <text x="34" y="36" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" font-weight="800" fill="#00FF9F">28.3</text>
+  </g>
+  <g transform="translate(412, 200)">
+    <rect width="68" height="48" rx="8" fill="#0D1B2A" stroke="#00D4FF" stroke-width="1"/>
+    <text x="34" y="20" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#00D4FF">Latencia</text>
+    <text x="34" y="36" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" font-weight="800" fill="#00D4FF">142ms</text>
+  </g>
+
+  <!-- Neural network bg nodes -->
+  <g opacity="0.12">
+    <circle cx="50"  cy="380" r="8" stroke="#00D4FF" stroke-width="1" fill="none"/>
+    <circle cx="120" cy="410" r="6" stroke="#00FF9F" stroke-width="1" fill="none"/>
+    <circle cx="460" cy="60"  r="7" stroke="#00D4FF" stroke-width="1" fill="none"/>
+    <circle cx="490" cy="130" r="5" stroke="#00FF9F" stroke-width="1" fill="none"/>
+    <line x1="50" y1="380" x2="120" y2="410" stroke="#00D4FF" stroke-width="0.8"/>
+    <line x1="460" y1="60" x2="490" y2="130" stroke="#00FF9F" stroke-width="0.8"/>
+  </g>
+
+  <!-- Gradients -->
+  <defs>
+    <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#0D1B2A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0D1B2A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="confBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#00FF9F"/>
+    </linearGradient>
+  </defs>
+</svg>

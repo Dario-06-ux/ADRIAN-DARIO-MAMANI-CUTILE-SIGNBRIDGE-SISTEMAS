@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0D1B2A"/>
+  <!-- Background grid -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#00D4FF" stroke-width="0.3" opacity="0.12"/>
+    </pattern>
+    <radialGradient id="glow" cx="30%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0D1B2A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Left accent line -->
+  <rect x="80" y="100" width="4" height="430" rx="2" fill="url(#lineGrad)"/>
+  <defs>
+    <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#00FF9F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Logo mark -->
+  <circle cx="130" cy="130" r="36" fill="#0a1520" stroke="#00D4FF" stroke-width="2"/>
+  <path d="M116 140 Q130 110 144 140" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <rect x="124" y="125" width="5" height="12" rx="2.5" fill="#00FF9F"/>
+  <rect x="131" y="121" width="5" height="16" rx="2.5" fill="#00D4FF"/>
+  <rect x="138" y="124" width="5" height="13" rx="2.5" fill="#00FF9F"/>
+
+  <!-- Title -->
+  <text x="190" y="120" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="900" fill="white">SignBridge</text>
+  <text x="680" y="120" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="900" fill="#00D4FF"> AI</text>
+
+  <!-- Subtitle -->
+  <text x="190" y="168" font-family="system-ui,-apple-system,sans-serif" font-size="22" fill="#8899aa">Sistema Inteligente de Reconocimiento de Lengua de Señas Boliviana</text>
+
+  <!-- Divider -->
+  <line x1="190" y1="196" x2="1100" y2="196" stroke="#00D4FF" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- KPI badges -->
+  <!-- Card 1 -->
+  <rect x="190" y="220" width="200" height="110" rx="12" fill="#0a1520" stroke="#00D4FF" stroke-width="1.2"/>
+  <text x="290" y="262" text-anchor="middle" font-family="system-ui" font-size="38" font-weight="800" fill="#00D4FF">93.7%</text>
+  <text x="290" y="292" text-anchor="middle" font-family="system-ui" font-size="14" fill="#8899aa">Precisión CNN</text>
+  <text x="290" y="316" text-anchor="middle" font-family="system-ui" font-size="12" fill="#55677a">Validación · 2,500 muestras</text>
+
+  <!-- Card 2 -->
+  <rect x="410" y="220" width="200" height="110" rx="12" fill="#0a1520" stroke="#00D4FF" stroke-width="1.2"/>
+  <text x="510" y="262" text-anchor="middle" font-family="system-ui" font-size="38" font-weight="800" fill="#00D4FF">142ms</text>
+  <text x="510" y="292" text-anchor="middle" font-family="system-ui" font-size="14" fill="#8899aa">Latencia P95</text>
+  <text x="510" y="316" text-anchor="middle" font-family="system-ui" font-size="12" fill="#55677a">Pipeline completo E2E</text>
+
+  <!-- Card 3 -->
+  <rect x="630" y="220" width="200" height="110" rx="12" fill="#0a1520" stroke="#00FF9F" stroke-width="1.2"/>
+  <text x="730" y="262" text-anchor="middle" font-family="system-ui" font-size="38" font-weight="800" fill="#00FF9F">28.3</text>
+  <text x="730" y="285" text-anchor="middle" font-family="system-ui" font-size="14" fill="#8899aa">FPS Procesamiento</text>
+  <text x="730" y="316" text-anchor="middle" font-family="system-ui" font-size="12" fill="#55677a">Supera RF-01 ≥24 FPS</text>
+
+  <!-- Card 4 -->
+  <rect x="850" y="220" width="200" height="110" rx="12" fill="#0a1520" stroke="#00D4FF" stroke-width="1.2"/>
+  <text x="950" y="262" text-anchor="middle" font-family="system-ui" font-size="38" font-weight="800" fill="#00D4FF">98%</text>
+  <text x="950" y="292" text-anchor="middle" font-family="system-ui" font-size="14" fill="#8899aa">WCAG 2.1 AA</text>
+  <text x="950" y="316" text-anchor="middle" font-family="system-ui" font-size="12" fill="#55677a">Accesibilidad verificada</text>
+
+  <!-- Tech stack badges -->
+  <text x="190" y="380" font-family="system-ui" font-size="14" fill="#55677a" font-weight="600" letter-spacing="2">STACK TECNOLÓGICO</text>
+  <rect x="190" y="396" width="120" height="30" rx="15" fill="rgba(255,111,0,0.1)" stroke="rgba(255,111,0,0.3)" stroke-width="1"/>
+  <text x="250" y="416" text-anchor="middle" font-family="system-ui" font-size="13" fill="#FF6F00" font-weight="600">TensorFlow</text>
+  <rect x="322" y="396" width="120" height="30" rx="15" fill="rgba(0,191,165,0.1)" stroke="rgba(0,191,165,0.3)" stroke-width="1"/>
+  <text x="382" y="416" text-anchor="middle" font-family="system-ui" font-size="13" fill="#00BFA5" font-weight="600">MediaPipe</text>
+  <rect x="454" y="396" width="90" height="30" rx="15" fill="rgba(97,218,251,0.1)" stroke="rgba(97,218,251,0.3)" stroke-width="1"/>
+  <text x="499" y="416" text-anchor="middle" font-family="system-ui" font-size="13" fill="#61DAFB" font-weight="600">React 18</text>
+  <rect x="556" y="396" width="90" height="30" rx="15" fill="rgba(0,150,136,0.1)" stroke="rgba(0,150,136,0.3)" stroke-width="1"/>
+  <text x="601" y="416" text-anchor="middle" font-family="system-ui" font-size="13" fill="#009688" font-weight="600">FastAPI</text>
+  <rect x="658" y="396" width="100" height="30" rx="15" fill="rgba(55,118,171,0.1)" stroke="rgba(55,118,171,0.3)" stroke-width="1"/>
+  <text x="708" y="416" text-anchor="middle" font-family="system-ui" font-size="13" fill="#3776AB" font-weight="600">Python 3.11</text>
+
+  <!-- Bottom info -->
+  <line x1="190" y1="460" x2="1100" y2="460" stroke="#00D4FF" stroke-width="0.8" opacity="0.15"/>
+  <text x="190" y="490" font-family="system-ui" font-size="16" fill="#55677a">Adrián Darío Mamani Cutile  ·  UNIFRANZ  ·  Ingeniería en Sistemas  ·  Hito 4  ·  2026</text>
+  <text x="190" y="516" font-family="system-ui" font-size="14" fill="#00D4FF" opacity="0.7">adrianmamani.github.io/signbridge-ai</text>
+
+  <!-- WCAG badge bottom right -->
+  <rect x="960" y="468" width="140" height="50" rx="8" fill="rgba(0,255,159,0.06)" stroke="rgba(0,255,159,0.25)" stroke-width="1"/>
+  <text x="1030" y="490" text-anchor="middle" font-family="system-ui" font-size="11" fill="#00FF9F" font-weight="700">WCAG 2.1 AA</text>
+  <text x="1030" y="508" text-anchor="middle" font-family="system-ui" font-size="10" fill="#55677a">MIT Open Source</text>
+</svg>

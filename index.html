@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary SEO -->
+  <title>SignBridge AI — Sistema Inteligente de Reconocimiento de Lengua de Señas Boliviana</title>
+  <meta name="description" content="SignBridge AI traduce en tiempo real la Lengua de Señas Boliviana (LSBO) a texto y voz mediante Inteligencia Artificial, TensorFlow y MediaPipe. Precisión del 93.7%. Proyecto universitario UNIFRANZ 2026." />
+  <meta name="keywords" content="SignBridge AI, Lengua de Señas Boliviana, LSBO, reconocimiento de señas, TensorFlow, MediaPipe, React, FastAPI, accesibilidad, UNIFRANZ, Bolivia, inteligencia artificial" />
+  <meta name="author" content="Adrián Darío Mamani Cutile — UNIFRANZ 2026" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://adrianmamani.github.io/signbridge-ai/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adrianmamani.github.io/signbridge-ai/" />
+  <meta property="og:title" content="SignBridge AI — Traducción de Lengua de Señas Boliviana con IA" />
+  <meta property="og:description" content="Sistema inteligente de reconocimiento y traducción en tiempo real de la LSBO. Precisión 93.7%, latencia 142 ms, WCAG 2.1 AA." />
+  <meta property="og:image" content="https://adrianmamani.github.io/signbridge-ai/assets/img/og-image.svg" />
+  <meta property="og:locale" content="es_BO" />
+  <meta property="og:site_name" content="SignBridge AI" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://adrianmamani.github.io/signbridge-ai/" />
+  <meta name="twitter:title" content="SignBridge AI — Traducción de Lengua de Señas Boliviana con IA" />
+  <meta name="twitter:description" content="Sistema inteligente de reconocimiento y traducción en tiempo real de la LSBO. Precisión 93.7%, latencia 142 ms." />
+  <meta name="twitter:image" content="https://adrianmamani.github.io/signbridge-ai/assets/img/og-image.svg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SignBridge AI",
+    "description": "Sistema inteligente de reconocimiento y traducción en tiempo real de la Lengua de Señas Boliviana (LSBO) mediante visión por computadora, CNN y síntesis de voz.",
+    "applicationCategory": "Accessibility",
+    "operatingSystem": "Web Browser",
+    "author": {
+      "@type": "Person",
+      "name": "Adrián Darío Mamani Cutile",
+      "affiliation": "Universidad Privada Franz Tamayo (UNIFRANZ)"
+    },
+    "license": "https://opensource.org/licenses/MIT",
+    "url": "https://adrianmamani.github.io/signbridge-ai/"
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo" aria-label="SignBridge AI — Inicio">
+        <img src="assets/img/logo.svg" alt="SignBridge AI Logo" width="36" height="36" />
+        <span class="nav-logo-text">SignBridge <span class="accent-cyan">AI</span></span>
+      </a>
+
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a href="#proyecto" class="nav-link" role="menuitem">Proyecto</a></li>
+        <li role="none"><a href="#problema" class="nav-link" role="menuitem">Problema</a></li>
+        <li role="none"><a href="#metricas" class="nav-link" role="menuitem">Métricas</a></li>
+        <li role="none"><a href="#tecnologias" class="nav-link" role="menuitem">Tecnologías</a></li>
+        <li role="none"><a href="#arquitectura" class="nav-link" role="menuitem">Arquitectura</a></li>
+        <li role="none"><a href="#pipeline" class="nav-link" role="menuitem">Pipeline IA</a></li>
+        <li role="none"><a href="#casos-uso" class="nav-link" role="menuitem">Casos de Uso</a></li>
+        <li role="none"><a href="#scrum" class="nav-link" role="menuitem">Scrum</a></li>
+        <li role="none"><a href="#documentacion" class="nav-link" role="menuitem">Docs</a></li>
+        <li role="none"><a href="#contacto" class="nav-link nav-cta" role="menuitem">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content reveal">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Proyecto Universitario UNIFRANZ · Ingeniería en Sistemas · 2026
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        Comunicación sin<br />
+        <span class="gradient-text">barreras</span> para la<br />
+        comunidad sorda
+      </h1>
+
+      <p class="hero-subtitle">
+        <strong>SignBridge AI</strong> traduce en tiempo real la <strong>Lengua de Señas Boliviana (LSBO)</strong>
+        a texto y voz mediante Inteligencia Artificial, logrando
+        <span class="accent-cyan">93.7% de precisión</span> y latencia de
+        <span class="accent-green">142 ms</span>.
+      </p>
+
+      <div class="hero-badges-row" aria-label="Indicadores clave de rendimiento">
+        <div class="kpi-badge">
+          <span class="kpi-num" data-target="93.7">0</span><span class="kpi-unit">%</span>
+          <span class="kpi-label">Precisión CNN</span>
+        </div>
+        <div class="kpi-badge">
+          <span class="kpi-num" data-target="142">0</span><span class="kpi-unit">ms</span>
+          <span class="kpi-label">Latencia P95</span>
+        </div>
+        <div class="kpi-badge">
+          <span class="kpi-num" data-target="28.3">0</span><span class="kpi-unit">FPS</span>
+          <span class="kpi-label">Velocidad</span>
+        </div>
+        <div class="kpi-badge">
+          <span class="kpi-num" data-target="98">0</span><span class="kpi-unit">%</span>
+          <span class="kpi-label">WCAG 2.1 AA</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#proyecto" class="btn btn-primary">Explorar el proyecto</a>
+        <a href="#documentacion" class="btn btn-outline">Ver documentación</a>
+      </div>
+
+      <div class="hero-tech-strip" aria-label="Tecnologías principales">
+        <span>Construido con</span>
+        <img src="assets/img/tensorflow.svg" alt="TensorFlow" width="28" height="28" title="TensorFlow 2.x" />
+        <img src="assets/img/mediapipe.svg" alt="MediaPipe" width="28" height="28" title="MediaPipe 0.10" />
+        <img src="assets/img/react.svg" alt="React" width="28" height="28" title="React 18" />
+        <img src="assets/img/fastapi.svg" alt="FastAPI" width="28" height="28" title="FastAPI" />
+        <img src="assets/img/python.svg" alt="Python" width="28" height="28" title="Python 3.11" />
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <img src="assets/img/hero-image.svg" alt="Ilustración de reconocimiento de señas con IA" class="hero-img" />
+    </div>
+
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN PROYECTO / PRESENTACIÓN
+  ============================================================ -->
+  <section class="section" id="proyecto" aria-labelledby="proyecto-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">El Proyecto</span>
+        <h2 class="section-title" id="proyecto-title">¿Qué es <span class="accent-cyan">SignBridge AI</span>?</h2>
+        <p class="section-desc">
+          Un sistema web de tiempo real que traduce gestos de la Lengua de Señas Boliviana a texto y voz
+          mediante Inteligencia Artificial, sin hardware especializado.
+        </p>
+      </div>
+
+      <div class="grid-3 reveal">
+        <article class="card card--glow">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#00D4FF" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="#00FF9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card-title">Objetivo General</h3>
+          <p class="card-text">Desarrollar un sistema inteligente que detecte, clasifique y traduzca en tiempo real los gestos de la LSBO mediante visión por computadora, CNN y síntesis de voz.</p>
+        </article>
+
+        <article class="card card--glow">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="#00D4FF" stroke-width="2"/><path d="M10 10h12M10 16h8M10 22h5" stroke="#00FF9F" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="card-title">Alcance del Sistema</h3>
+          <p class="card-text">Reconocimiento del alfabeto dactilológico completo (26 letras) y 20 señas de alta frecuencia. Procesamiento en tiempo real sin hardware adicional.</p>
+        </article>
+
+        <article class="card card--glow">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4l3.09 6.26L26 11.27l-5 4.87 1.18 6.86L16 20l-6.18 3.27L11 16.14 6 11.27l6.91-1.01L16 4z" stroke="#00D4FF" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card-title">Impacto Social</h3>
+          <p class="card-text">Reducción de barreras comunicativas para las ~120,000 personas con discapacidad auditiva en Bolivia, alineado con el ODS 10 y la CDPD de la ONU.</p>
+        </article>
+      </div>
+
+      <!-- Objetivos específicos -->
+      <div class="objectives-grid reveal" aria-labelledby="oe-title">
+        <h3 class="subsection-title" id="oe-title">Objetivos Específicos</h3>
+        <div class="oe-list">
+          <div class="oe-item">
+            <span class="oe-tag">OE1</span>
+            <div>
+              <strong>Módulo de Captura</strong>
+              <p>Video en tiempo real a mínimo 24 FPS mediante WebRTC, con latencia de adquisición &lt;50 ms.</p>
+            </div>
+          </div>
+          <div class="oe-item">
+            <span class="oe-tag">OE2</span>
+            <div>
+              <strong>Módulo MediaPipe</strong>
+              <p>Extracción de 21 landmarks de la mano en coordenadas (x, y, z), tasa de detección ≥90%.</p>
+            </div>
+          </div>
+          <div class="oe-item">
+            <span class="oe-tag">OE3</span>
+            <div>
+              <strong>Módulo CNN / TensorFlow</strong>
+              <p>Clasificación de señas con precisión ≥92% en conjunto de validación sobre el alfabeto dactilológico LSBO.</p>
+            </div>
+          </div>
+          <div class="oe-item">
+            <span class="oe-tag">OE4</span>
+            <div>
+              <strong>Módulo Texto/Voz</strong>
+              <p>Traducción de señas a texto + síntesis de voz con latencia extremo a extremo &lt;200 ms.</p>
+            </div>
+          </div>
+          <div class="oe-item">
+            <span class="oe-tag">OE5</span>
+            <div>
+              <strong>Módulo Interfaz React</strong>
+              <p>Interfaz accesible, responsiva, conforme a WCAG 2.1 AA con soporte desktop y móvil.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROBLEMA
+  ============================================================ -->
+  <section class="section section--dark" id="problema" aria-labelledby="problema-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">El Problema</span>
+        <h2 class="section-title" id="problema-title">Una brecha comunicativa <span class="accent-cyan">sistémica</span></h2>
+      </div>
+
+      <div class="problem-grid reveal">
+        <div class="problem-stats">
+          <div class="stat-card">
+            <span class="stat-number" data-target="430">0</span><span class="stat-unit">M+</span>
+            <span class="stat-label">Personas con pérdida auditiva en el mundo (OMS, 2023)</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="120">0</span><span class="stat-unit">K</span>
+            <span class="stat-label">Personas con discapacidad auditiva en Bolivia (Censo 2012 + proyección 2026)</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number accent-red">120</span><span class="stat-unit accent-red">USD/h</span>
+            <span class="stat-label">Costo de un intérprete LSBO certificado (OPS, 2021)</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="700">0</span><span class="stat-unit">M</span>
+            <span class="stat-label">Personas afectadas proyectadas para 2050 (OMS)</span>
+          </div>
+        </div>
+
+        <div class="problem-text">
+          <div class="problem-block">
+            <div class="problem-icon" aria-hidden="true">⚠️</div>
+            <div>
+              <h3>Escasez de Intérpretes</h3>
+              <p>Bolivia carece de intérpretes certificados de LSBO en número suficiente. Su costo de USD 60–120/h los hace inaccesibles para la mayoría de la población sorda.</p>
+            </div>
+          </div>
+          <div class="problem-block">
+            <div class="problem-icon" aria-hidden="true">🌍</div>
+            <div>
+              <h3>Tecnología Extranjera Inadecuada</h3>
+              <p>Las soluciones existentes están diseñadas para ASL (Lengua de Señas Americana) o LSE, sin contemplar las particularidades léxicas y fonológicas de la LSBO.</p>
+            </div>
+          </div>
+          <div class="problem-block">
+            <div class="problem-icon" aria-hidden="true">📜</div>
+            <div>
+              <h3>Derecho Constitucional Vulnerado</h3>
+              <p>La LSBO está reconocida por la CPE de Bolivia (2009). La falta de herramientas tecnológicas contraviene los artículos 9 y 21 de la CDPD de la ONU, ratificada mediante Ley N.° 4024.</p>
+            </div>
+          </div>
+          <div class="problem-block">
+            <div class="problem-icon" aria-hidden="true">🔬</div>
+            <div>
+              <h3>Formulación del Problema</h3>
+              <p>¿De qué manera un sistema inteligente de reconocimiento y traducción en tiempo real de la LSBO puede reducir las barreras comunicativas de las personas con discapacidad auditiva en Bolivia?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BENEFICIOS
+  ============================================================ -->
+  <section class="section" id="beneficios" aria-labelledby="beneficios-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Beneficios</span>
+        <h2 class="section-title" id="beneficios-title">Impacto en <span class="accent-cyan">tres dimensiones</span></h2>
+      </div>
+
+      <div class="benefits-tabs reveal">
+        <div class="tabs-header" role="tablist">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-social" id="btn-social">Social</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-tech" id="btn-tech">Tecnológico</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-economic" id="btn-economic">Económico</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-social" role="tabpanel" aria-labelledby="btn-social">
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">🤝</div>
+            <div>
+              <h3>Justificación Social</h3>
+              <ul class="benefit-list">
+                <li>Reduce barreras comunicativas para ~120,000 personas sordas en Bolivia.</li>
+                <li>Democratiza el acceso a herramientas de traducción de lengua de señas de forma gratuita.</li>
+                <li>Alineado con ODS N.° 10 (Reducción de Desigualdades) y ODS N.° 4 (Educación de Calidad).</li>
+                <li>Responde a los artículos 9 y 21 de la Convención sobre Derechos de Personas con Discapacidad (ONU).</li>
+                <li>Promueve la autonomía comunicativa en entornos educativos, laborales y sociales.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-tech" role="tabpanel" aria-labelledby="btn-tech" hidden>
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">⚙️</div>
+            <div>
+              <h3>Justificación Tecnológica</h3>
+              <ul class="benefit-list">
+                <li>Stack 100% open source: TensorFlow 2.x, MediaPipe 0.10, React 18, FastAPI, Python 3.11.</li>
+                <li>Inferencia eficiente con TensorFlow Lite, compatible con edge computing.</li>
+                <li>Comunicación en tiempo real mediante WebSocket (wss://) con latencia P95 de 142 ms.</li>
+                <li>Arquitectura Three-Tier escalable a 50+ sesiones simultáneas sin degradación.</li>
+                <li>Cumplimiento WCAG 2.1 AA verificado con axe-core (98% de cobertura automática).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-economic" role="tabpanel" aria-labelledby="btn-economic" hidden>
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">💡</div>
+            <div>
+              <h3>Justificación Económica</h3>
+              <ul class="benefit-list">
+                <li>Elimina el costo de USD 60–120/h de interpretación profesional LSBO.</li>
+                <li>Funciona sobre hardware convencional: solo se requiere cámara web y navegador moderno.</li>
+                <li>Código abierto: instituciones educativas y de salud pueden desplegarlo gratuitamente.</li>
+                <li>Arquitectura modular compatible con modelo freemium para sostenibilidad financiera.</li>
+                <li>Sin costo de licenciamiento de software: ahorro directo para organizaciones sin fines de lucro.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MÉTRICAS REALES
+  ============================================================ -->
+  <section class="section section--dark" id="metricas" aria-labelledby="metricas-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Resultados Obtenidos</span>
+        <h2 class="section-title" id="metricas-title">Métricas <span class="accent-green">verificadas</span></h2>
+        <p class="section-desc">Resultados cuantificables al término del Hito 4, medidos sobre hardware estándar (Intel Core i5-8250U, 8 GB RAM).</p>
+      </div>
+
+      <div class="metrics-grid reveal">
+        <div class="metric-card metric-card--primary">
+          <div class="metric-bar-wrap" aria-label="Precisión CNN 93.7%">
+            <div class="metric-bar-fill" data-width="93.7"></div>
+          </div>
+          <div class="metric-info">
+            <span class="metric-value" data-target="93.7">0</span><span class="metric-unit">%</span>
+            <span class="metric-name">Precisión del Modelo CNN</span>
+            <span class="metric-detail">Sobre 2,500 muestras de validación · Supera RF-03 (≥92%)</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-bar-wrap" aria-label="Detección MediaPipe 94.2%">
+            <div class="metric-bar-fill" data-width="94.2"></div>
+          </div>
+          <div class="metric-info">
+            <span class="metric-value" data-target="94.2">0</span><span class="metric-unit">%</span>
+            <span class="metric-name">Tasa de Detección MediaPipe</span>
+            <span class="metric-detail">Sobre 500 imágenes en condiciones controladas · Supera RF-02 (≥90%)</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-bar-wrap metric-bar-wrap--green" aria-label="Latencia pipeline 142ms (71% de 200ms)">
+            <div class="metric-bar-fill" data-width="71"></div>
+          </div>
+          <div class="metric-info">
+            <span class="metric-value" data-target="142">0</span><span class="metric-unit">ms</span>
+            <span class="metric-name">Latencia Pipeline P95</span>
+            <span class="metric-detail">Captura → Clasificación → Visualización · Cumple RNF-01 (&lt;200 ms)</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-bar-wrap" aria-label="Velocidad 28.3 FPS de 30 target (94%)">
+            <div class="metric-bar-fill" data-width="94"></div>
+          </div>
+          <div class="metric-info">
+            <span class="metric-value" data-target="28.3">0</span><span class="metric-unit">FPS</span>
+            <span class="metric-name">Velocidad de Procesamiento</span>
+            <span class="metric-detail">Promedio en condiciones de prueba · Supera RF-01 (≥24 FPS)</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-bar-wrap" aria-label="WCAG 2.1 AA 98%">
+            <div class="metric-bar-fill" data-width="98"></div>
+          </div>
+          <div class="metric-info">
+            <span class="metric-value" data-target="98">0</span><span class="metric-unit">%</span>
+            <span class="metric-name">Conformidad WCAG 2.1 AA</span>
+            <span class="metric-detail">Verificado con axe-core · 2 falsos positivos confirmados no aplicables</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-bar-wrap" aria-label="Lighthouse Performance 94%">
+            <div class="metric-bar-fill" data-width="94"></div>
+          </div>
+          <div class="metric-info">
+            <span class="metric-value" data-target="94">0</span><span class="metric-unit">/100</span>
+            <span class="metric-name">Google Lighthouse Performance</span>
+            <span class="metric-detail">Landing Page · Accessibility 98 · Best Practices 100 · SEO 95</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lighthouse-grid reveal">
+        <div class="lighthouse-card">
+          <div class="lighthouse-circle" style="--score: 94; --color: #00FF9F">
+            <span>94</span>
+          </div>
+          <span>Performance</span>
+        </div>
+        <div class="lighthouse-card">
+          <div class="lighthouse-circle" style="--score: 98; --color: #00D4FF">
+            <span>98</span>
+          </div>
+          <span>Accessibility</span>
+        </div>
+        <div class="lighthouse-card">
+          <div class="lighthouse-circle" style="--score: 100; --color: #00FF9F">
+            <span>100</span>
+          </div>
+          <span>Best Practices</span>
+        </div>
+        <div class="lighthouse-card">
+          <div class="lighthouse-circle" style="--score: 95; --color: #00D4FF">
+            <span>95</span>
+          </div>
+          <span>SEO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ARQUITECTURA DEL SISTEMA
+  ============================================================ -->
+  <section class="section" id="arquitectura" aria-labelledby="arquitectura-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Arquitectura</span>
+        <h2 class="section-title" id="arquitectura-title">Three-Tier <span class="accent-cyan">Architecture</span></h2>
+        <p class="section-desc">Separación clara de responsabilidades entre presentación, lógica de negocio y persistencia de datos.</p>
+      </div>
+
+      <div class="arch-diagram reveal" role="img" aria-label="Diagrama de arquitectura three-tier de SignBridge AI">
+        <div class="arch-layer arch-layer--presentation">
+          <div class="arch-layer-label">Capa de Presentación</div>
+          <div class="arch-components">
+            <div class="arch-comp">React 18</div>
+            <div class="arch-comp">Tailwind CSS</div>
+            <div class="arch-comp">WebRTC / getUserMedia</div>
+            <div class="arch-comp">Web Speech API</div>
+            <div class="arch-comp">WebSocket Client</div>
+          </div>
+          <div class="arch-arrow" aria-hidden="true">HTTPS / WSS</div>
+        </div>
+
+        <div class="arch-layer arch-layer--business">
+          <div class="arch-layer-label">Capa de Lógica de Negocio</div>
+          <div class="arch-components">
+            <div class="arch-comp">FastAPI + Uvicorn</div>
+            <div class="arch-comp">MediaPipe 0.10</div>
+            <div class="arch-comp">TensorFlow Lite 2.x</div>
+            <div class="arch-comp">Nginx Reverse Proxy</div>
+            <div class="arch-comp">Python 3.11</div>
+          </div>
+          <div class="arch-arrow" aria-hidden="true">SQLAlchemy ORM</div>
+        </div>
+
+        <div class="arch-layer arch-layer--data">
+          <div class="arch-layer-label">Capa de Datos</div>
+          <div class="arch-components">
+            <div class="arch-comp">SQLite (dev)</div>
+            <div class="arch-comp">PostgreSQL 15 (prod)</div>
+            <div class="arch-comp">Modelos .tflite</div>
+            <div class="arch-comp">SQLAlchemy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modules-grid reveal" aria-labelledby="modules-title">
+        <h3 class="subsection-title" id="modules-title">Módulos del Sistema</h3>
+        <div class="grid-5">
+          <div class="module-card">
+            <span class="module-id">M1</span>
+            <h4>Captura</h4>
+            <p>WebRTC getUserMedia · 640×480 px · ≥24 FPS · latencia &lt;50 ms</p>
+          </div>
+          <div class="module-card">
+            <span class="module-id">M2</span>
+            <h4>Procesamiento</h4>
+            <p>MediaPipe Hands · 21 landmarks (x,y,z) · detección ≥90%</p>
+          </div>
+          <div class="module-card">
+            <span class="module-id">M3</span>
+            <h4>IA / CNN</h4>
+            <p>TensorFlow Lite · 50K muestras · 25 clases · softmax output</p>
+          </div>
+          <div class="module-card">
+            <span class="module-id">M4</span>
+            <h4>Traducción</h4>
+            <p>Texto acumulado + Web Speech API · latencia E2E &lt;200 ms</p>
+          </div>
+          <div class="module-card">
+            <span class="module-id">M5</span>
+            <h4>Interfaz</h4>
+            <p>React 18 · WCAG 2.1 AA · mobile-first · dark navy theme</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TECNOLOGÍAS
+  ============================================================ -->
+  <section class="section section--dark" id="tecnologias" aria-labelledby="tech-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Stack Tecnológico</span>
+        <h2 class="section-title" id="tech-title">Tecnologías <span class="accent-cyan">de vanguardia</span></h2>
+      </div>
+
+      <div class="tech-grid reveal">
+        <article class="tech-card">
+          <img src="assets/img/tensorflow.svg" alt="TensorFlow" width="56" height="56" />
+          <h3>TensorFlow 2.x</h3>
+          <p>Entrenamiento y despliegue del modelo CNN de clasificación de señas. TFLite para inferencia optimizada en tiempo real.</p>
+          <span class="tech-badge">IA / ML</span>
+        </article>
+
+        <article class="tech-card">
+          <img src="assets/img/mediapipe.svg" alt="MediaPipe" width="56" height="56" />
+          <h3>MediaPipe 0.10</h3>
+          <p>Detección de mano y extracción de 21 landmarks 3D normalizados en tiempo real mediante el modelo BlazePalm de Google.</p>
+          <span class="tech-badge">Visión por Computadora</span>
+        </article>
+
+        <article class="tech-card">
+          <img src="assets/img/react.svg" alt="React" width="56" height="56" />
+          <h3>React 18</h3>
+          <p>Interfaz SPA con componentes VideoCapture, TranslationPanel, ControlBar y SignConfidence. Tailwind CSS para estilos.</p>
+          <span class="tech-badge">Frontend</span>
+        </article>
+
+        <article class="tech-card">
+          <img src="assets/img/fastapi.svg" alt="FastAPI" width="56" height="56" />
+          <h3>FastAPI + Python 3.11</h3>
+          <p>API REST y WebSocket de alto rendimiento con validación automática Pydantic, Swagger UI y soporte asyncio.</p>
+          <span class="tech-badge">Backend</span>
+        </article>
+
+        <article class="tech-card">
+          <img src="assets/img/python.svg" alt="Python" width="56" height="56" />
+          <h3>PostgreSQL 15</h3>
+          <p>Base de datos de producción con SQLAlchemy ORM. Entidades: Usuario, Sesion, Sena, Traduccion, ModeloIA, Contacto.</p>
+          <span class="tech-badge">Base de Datos</span>
+        </article>
+
+        <article class="tech-card">
+          <img src="assets/img/github.svg" alt="GitHub" width="56" height="56" />
+          <h3>GitHub Actions CI/CD</h3>
+          <p>Pipeline automatizado de pruebas unitarias, build de producción y despliegue en GitHub Pages con cada push a main.</p>
+          <span class="tech-badge">DevOps</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PIPELINE DE IA
+  ============================================================ -->
+  <section class="section" id="pipeline" aria-labelledby="pipeline-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Pipeline de IA</span>
+        <h2 class="section-title" id="pipeline-title">De la seña a la <span class="accent-green">traducción</span></h2>
+        <p class="section-desc">Cada fotograma recorre 7 etapas en menos de 200 ms.</p>
+      </div>
+
+      <div class="pipeline reveal" role="list" aria-label="Etapas del pipeline de inteligencia artificial">
+        <div class="pipeline-step" role="listitem">
+          <div class="pipeline-num">01</div>
+          <div class="pipeline-content">
+            <h3>Captura de Frame</h3>
+            <p>WebRTC captura un fotograma de la cámara web cada ~42 ms (24 FPS). Resolución 640×480 px.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector" aria-hidden="true"></div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="pipeline-num">02</div>
+          <div class="pipeline-content">
+            <h3>Conversión de Color</h3>
+            <p>El módulo convierte el fotograma de BGR a RGB y normaliza la resolución para MediaPipe.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector" aria-hidden="true"></div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="pipeline-num">03</div>
+          <div class="pipeline-content">
+            <h3>Detección de Mano</h3>
+            <p>MediaPipe Hands detecta la región de la mano con el modelo BlazePalm de Google.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector" aria-hidden="true"></div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="pipeline-num">04</div>
+          <div class="pipeline-content">
+            <h3>Extracción de Landmarks</h3>
+            <p>Se extraen 21 puntos de referencia tridimensionales (x, y, z) normalizados al bounding box.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector" aria-hidden="true"></div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="pipeline-num">05</div>
+          <div class="pipeline-content">
+            <h3>Normalización del Vector</h3>
+            <p>El vector de 63 floats se normaliza respecto al landmark 0 (muñeca) para invarianza de posición.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector" aria-hidden="true"></div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="pipeline-num">06</div>
+          <div class="pipeline-content">
+            <h3>Inferencia CNN (TFLite)</h3>
+            <p>El modelo produce un vector softmax sobre N clases. Se selecciona la clase con probabilidad ≥0.85.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector" aria-hidden="true"></div>
+
+        <div class="pipeline-step pipeline-step--last" role="listitem">
+          <div class="pipeline-num">07</div>
+          <div class="pipeline-content">
+            <h3>Traducción + Síntesis</h3>
+            <p>La etiqueta se acumula como texto y se sintetiza en voz mediante la Web Speech API del navegador.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CÓMO FUNCIONA
+  ============================================================ -->
+  <section class="section section--dark" id="como-funciona" aria-labelledby="como-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">¿Cómo Funciona?</span>
+        <h2 class="section-title" id="como-title">4 pasos para <span class="accent-cyan">comunicarte</span></h2>
+      </div>
+
+      <div class="steps-grid reveal">
+        <div class="step-card">
+          <div class="step-num" aria-hidden="true">1</div>
+          <div class="step-icon" aria-hidden="true">📷</div>
+          <h3>Activa tu cámara</h3>
+          <p>El sistema solicita acceso a la cámara web del dispositivo mediante la API WebRTC del navegador. No se almacenan frames en disco.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num" aria-hidden="true">2</div>
+          <div class="step-icon" aria-hidden="true">🤟</div>
+          <h3>Realiza la seña</h3>
+          <p>Efectúa una seña de la LSBO frente a la cámara. MediaPipe detecta tu mano y extrae 21 landmarks tridimensionales en tiempo real.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num" aria-hidden="true">3</div>
+          <div class="step-icon" aria-hidden="true">🧠</div>
+          <h3>El sistema clasifica</h3>
+          <p>La CNN entrenada con TensorFlow clasifica la seña con 93.7% de precisión. El resultado aparece en pantalla en menos de 200 ms.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num" aria-hidden="true">🔊</div>
+          <div class="step-icon" aria-hidden="true">💬</div>
+          <h3>Escucha la traducción</h3>
+          <p>El texto acumulado se sintetiza en voz mediante la Web Speech API. Funciona sin conexión a internet desde el navegador.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CASOS DE USO
+  ============================================================ -->
+  <section class="section" id="casos-uso" aria-labelledby="cu-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Casos de Uso</span>
+        <h2 class="section-title" id="cu-title">7 interacciones <span class="accent-cyan">funcionales</span></h2>
+      </div>
+
+      <div class="cu-grid reveal">
+        <div class="cu-card">
+          <span class="cu-id">CU01</span>
+          <h3>Iniciar Sesión de Traducción</h3>
+          <p>El usuario activa la cámara y el sistema inicia el pipeline de reconocimiento en tiempo real en menos de 3 segundos.</p>
+          <span class="cu-actor">Actor: Usuario Final</span>
+        </div>
+        <div class="cu-card">
+          <span class="cu-id">CU02</span>
+          <h3>Detectar y Clasificar Seña</h3>
+          <p>El sistema detecta la mano, extrae 21 landmarks y clasifica la seña con confianza ≥85% en &lt;200 ms.</p>
+          <span class="cu-actor">Actor: Motor IA (TF + MediaPipe)</span>
+        </div>
+        <div class="cu-card">
+          <span class="cu-id">CU03</span>
+          <h3>Traducir Seña a Texto</h3>
+          <p>Las señas clasificadas se convierten en texto acumulado visible en pantalla en tiempo real.</p>
+          <span class="cu-actor">Actor: Sistema / Usuario</span>
+        </div>
+        <div class="cu-card">
+          <span class="cu-id">CU04</span>
+          <h3>Sintetizar Audio</h3>
+          <p>El texto traducido se convierte en voz mediante la Web Speech API del navegador, sin internet.</p>
+          <span class="cu-actor">Actor: Web Speech API</span>
+        </div>
+        <div class="cu-card">
+          <span class="cu-id">CU05</span>
+          <h3>Exportar Historial</h3>
+          <p>El usuario descarga el historial completo de la sesión en formato TXT o PDF en menos de 3 segundos.</p>
+          <span class="cu-actor">Actor: Usuario Final</span>
+        </div>
+        <div class="cu-card">
+          <span class="cu-id">CU06</span>
+          <h3>Detener Sesión</h3>
+          <p>El usuario cierra la sesión de traducción, liberando el recurso de cámara web del dispositivo.</p>
+          <span class="cu-actor">Actor: Usuario Final</span>
+        </div>
+        <div class="cu-card cu-card--full">
+          <span class="cu-id">CU07</span>
+          <h3>Configurar Preferencias</h3>
+          <p>El usuario ajusta el umbral de confianza del modelo, velocidad de síntesis de voz y variante de señas (LSBO/ASL) desde el panel de configuración.</p>
+          <span class="cu-actor">Actor: Usuario Final</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACCESIBILIDAD
+  ============================================================ -->
+  <section class="section section--dark" id="accesibilidad" aria-labelledby="acc-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Accesibilidad</span>
+        <h2 class="section-title" id="acc-title">Diseñado para <span class="accent-green">todos</span></h2>
+        <p class="section-desc">SignBridge AI implementa WCAG 2.1 nivel AA, garantizando que la herramienta sea accesible para quienes más la necesitan.</p>
+      </div>
+
+      <div class="acc-grid reveal">
+        <div class="acc-card">
+          <div class="acc-icon" aria-hidden="true">👁️</div>
+          <h3>Perceptible</h3>
+          <p>Contraste de color ≥4.5:1. Textos alternativos en todos los elementos visuales. Información no solo por color.</p>
+        </div>
+        <div class="acc-card">
+          <div class="acc-icon" aria-hidden="true">⌨️</div>
+          <h3>Operable</h3>
+          <p>Navegación completa por teclado. Foco visible en todos los controles interactivos. Sin trampa de teclado.</p>
+        </div>
+        <div class="acc-card">
+          <div class="acc-icon" aria-hidden="true">📖</div>
+          <h3>Comprensible</h3>
+          <p>Etiquetas asociadas mediante for/id en formularios. Idioma de la página declarado (lang="es"). Mensajes de error claros.</p>
+        </div>
+        <div class="acc-card">
+          <div class="acc-icon" aria-hidden="true">🔧</div>
+          <h3>Robusto</h3>
+          <p>Compatible con lectores de pantalla (NVDA, JAWS, VoiceOver). Roles ARIA semánticos en todos los componentes.</p>
+        </div>
+      </div>
+
+      <div class="wcag-badge reveal" role="img" aria-label="Certificación WCAG 2.1 AA con 98% de cobertura">
+        <div class="wcag-logo">WCAG 2.1 <span>AA</span></div>
+        <div class="wcag-info">
+          <strong>98% de conformidad automatizada</strong>
+          <span>Verificado con axe-core · 2 falsos positivos confirmados no aplicables</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SCRUM / LÍNEA DE TIEMPO
+  ============================================================ -->
+  <section class="section" id="scrum" aria-labelledby="scrum-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Metodología Scrum</span>
+        <h2 class="section-title" id="scrum-title">5 Sprints hacia la <span class="accent-cyan">excelencia</span></h2>
+        <p class="section-desc">Desarrollo iterativo e incremental siguiendo la Guía Scrum 2020 (Schwaber & Sutherland).</p>
+      </div>
+
+      <div class="timeline reveal" role="list" aria-label="Línea de tiempo Scrum de SignBridge AI">
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-marker">S1</div>
+          <div class="timeline-content">
+            <h3>Sprint 1</h3>
+            <p class="timeline-goal">Goal: Configuración del entorno y prototipo de captura de video</p>
+            <ul>
+              <li>Configuración del entorno de desarrollo</li>
+              <li>Prototipo de captura de video con WebRTC</li>
+              <li>Convenciones de nombrado de variables (Retrospective)</li>
+              <li>Estructura inicial del repositorio GitHub</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-marker">S2</div>
+          <div class="timeline-content">
+            <h3>Sprint 2</h3>
+            <p class="timeline-goal">Goal: Integración de MediaPipe y extracción de landmarks</p>
+            <ul>
+              <li>Integración MediaPipe Hands 0.10</li>
+              <li>Extracción de 21 landmarks normalizados</li>
+              <li>Ajuste del protocolo: REST → WebSocket (Sprint Review)</li>
+              <li>Visualización de landmarks en canvas HTML5</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-marker">S3</div>
+          <div class="timeline-content">
+            <h3>Sprint 3</h3>
+            <p class="timeline-goal">Goal: Entrenamiento y validación del modelo CNN</p>
+            <ul>
+              <li>Recolección y etiquetado de 50K muestras LSBO</li>
+              <li>Diseño y entrenamiento de la arquitectura CNN</li>
+              <li>Adopción del patrón Repository (Retrospective)</li>
+              <li>Serialización del modelo en formato TFLite</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-marker">S4</div>
+          <div class="timeline-content">
+            <h3>Sprint 4</h3>
+            <p class="timeline-goal">Goal: Interfaz React y módulo de síntesis de voz</p>
+            <ul>
+              <li>Desarrollo de componentes React (VideoCapture, TranslationPanel)</li>
+              <li>Integración Web Speech API para síntesis de voz</li>
+              <li>Sistematización de pruebas unitarias (Retrospective)</li>
+              <li>Panel de configuración de preferencias de usuario</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-marker active">S5</div>
+          <div class="timeline-content">
+            <h3>Sprint 5</h3>
+            <p class="timeline-goal">Goal: Integración completa, Landing Page y despliegue</p>
+            <ul>
+              <li>Integración full-stack del pipeline completo</li>
+              <li>Landing Page desplegada en GitHub Pages</li>
+              <li>Configuración GitHub Actions CI/CD (deploy.yml)</li>
+              <li>Hito 4: Informe Técnico Final · Precisión: 93.7%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALERÍA DE DIAGRAMAS
+  ============================================================ -->
+  <section class="section section--dark" id="diagramas" aria-labelledby="diagramas-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Diagramas UML</span>
+        <h2 class="section-title" id="diagramas-title">Arquitectura <span class="accent-cyan">documentada</span></h2>
+      </div>
+
+      <div class="diagrams-grid reveal">
+        <div class="diagram-card">
+          <div class="diagram-preview diagram-preview--usecase" aria-label="Diagrama de Casos de Uso">
+            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="1" width="278" height="178" rx="8" stroke="#00D4FF" stroke-width="1.5" fill="#0D1B2A"/>
+              <text x="140" y="20" text-anchor="middle" fill="#00D4FF" font-size="11" font-family="Inter">«SignBridge AI»</text>
+              <ellipse cx="70" cy="90" rx="40" ry="16" stroke="#00D4FF" stroke-width="1.2" fill="none"/>
+              <text x="70" y="94" text-anchor="middle" fill="#fff" font-size="8">CU01 Sesión</text>
+              <ellipse cx="140" cy="60" rx="40" ry="16" stroke="#00D4FF" stroke-width="1.2" fill="none"/>
+              <text x="140" y="64" text-anchor="middle" fill="#fff" font-size="8">CU02 Detectar</text>
+              <ellipse cx="210" cy="90" rx="40" ry="16" stroke="#00D4FF" stroke-width="1.2" fill="none"/>
+              <text x="210" y="94" text-anchor="middle" fill="#fff" font-size="8">CU03 Traducir</text>
+              <ellipse cx="140" cy="130" rx="40" ry="16" stroke="#00FF9F" stroke-width="1.2" fill="none"/>
+              <text x="140" y="134" text-anchor="middle" fill="#fff" font-size="8">CU04 Sintetizar</text>
+              <line x1="110" y1="90" x2="100" y2="76" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4,2"/>
+              <line x1="170" y1="60" x2="170" y2="74" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4,2"/>
+              <line x1="170" y1="90" x2="170" y2="114" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4,2"/>
+              <circle cx="20" cy="90" r="8" fill="none" stroke="#00FF9F" stroke-width="1.5"/>
+              <line x1="20" y1="98" x2="20" y2="115" stroke="#00FF9F" stroke-width="1.5"/>
+              <line x1="12" y1="105" x2="28" y2="105" stroke="#00FF9F" stroke-width="1.5"/>
+              <line x1="20" y1="115" x2="14" y2="128" stroke="#00FF9F" stroke-width="1.5"/>
+              <line x1="20" y1="115" x2="26" y2="128" stroke="#00FF9F" stroke-width="1.5"/>
+              <text x="20" y="142" text-anchor="middle" fill="#00FF9F" font-size="7">Usuario</text>
+              <line x1="28" y1="90" x2="30" y2="90" stroke="#00FF9F" stroke-width="1"/>
+            </svg>
+          </div>
+          <h3>Diagrama de Casos de Uso</h3>
+          <p>7 casos de uso · 4 actores · relaciones include</p>
+        </div>
+
+        <div class="diagram-card">
+          <div class="diagram-preview diagram-preview--class" aria-label="Diagrama de Clases">
+            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="1" width="278" height="178" rx="8" stroke="#00D4FF" stroke-width="1.5" fill="#0D1B2A"/>
+              <rect x="10" y="20" width="80" height="50" rx="3" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <line x1="10" y1="33" x2="90" y2="33" stroke="#00D4FF" stroke-width="0.8"/>
+              <text x="50" y="30" text-anchor="middle" fill="#00D4FF" font-size="8" font-weight="bold">Usuario</text>
+              <text x="15" y="44" fill="#ccc" font-size="6">+id_usuario: int</text>
+              <text x="15" y="54" fill="#ccc" font-size="6">+email: String</text>
+              <text x="15" y="64" fill="#00FF9F" font-size="6">+iniciarSesion()</text>
+              <rect x="100" y="20" width="80" height="50" rx="3" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <line x1="100" y1="33" x2="180" y2="33" stroke="#00D4FF" stroke-width="0.8"/>
+              <text x="140" y="30" text-anchor="middle" fill="#00D4FF" font-size="8" font-weight="bold">Sesion</text>
+              <text x="105" y="44" fill="#ccc" font-size="6">+id_sesion: int</text>
+              <text x="105" y="54" fill="#ccc" font-size="6">+fecha_inicio: DT</text>
+              <text x="105" y="64" fill="#00FF9F" font-size="6">+exportar()</text>
+              <rect x="190" y="20" width="80" height="50" rx="3" stroke="#00FF9F" stroke-width="1.2" fill="#0a1520"/>
+              <line x1="190" y1="33" x2="270" y2="33" stroke="#00FF9F" stroke-width="0.8"/>
+              <text x="230" y="30" text-anchor="middle" fill="#00FF9F" font-size="8" font-weight="bold">Contacto</text>
+              <text x="195" y="44" fill="#ccc" font-size="6">+nombre: String</text>
+              <text x="195" y="54" fill="#ccc" font-size="6">+email: String</text>
+              <text x="195" y="64" fill="#ccc" font-size="6">+mensaje: Text</text>
+              <rect x="10" y="110" width="80" height="50" rx="3" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <line x1="10" y1="123" x2="90" y2="123" stroke="#00D4FF" stroke-width="0.8"/>
+              <text x="50" y="120" text-anchor="middle" fill="#00D4FF" font-size="8" font-weight="bold">Sena</text>
+              <text x="15" y="134" fill="#ccc" font-size="6">+etiqueta: String</text>
+              <text x="15" y="144" fill="#ccc" font-size="6">+confianza: Float</text>
+              <rect x="100" y="110" width="80" height="50" rx="3" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <line x1="100" y1="123" x2="180" y2="123" stroke="#00D4FF" stroke-width="0.8"/>
+              <text x="140" y="120" text-anchor="middle" fill="#00D4FF" font-size="8" font-weight="bold">ModeloIA</text>
+              <text x="105" y="134" fill="#ccc" font-size="6">+version: String</text>
+              <text x="105" y="144" fill="#ccc" font-size="6">+precision_val: Float</text>
+              <line x1="90" y1="45" x2="100" y2="45" stroke="#00D4FF" stroke-width="1"/>
+              <line x1="50" y1="70" x2="50" y2="110" stroke="#00D4FF" stroke-width="1"/>
+              <line x1="140" y1="70" x2="140" y2="110" stroke="#00D4FF" stroke-width="1"/>
+            </svg>
+          </div>
+          <h3>Diagrama de Clases</h3>
+          <p>6 entidades · atributos, métodos, relaciones</p>
+        </div>
+
+        <div class="diagram-card">
+          <div class="diagram-preview diagram-preview--sequence" aria-label="Diagrama de Secuencia">
+            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="1" width="278" height="178" rx="8" stroke="#00D4FF" stroke-width="1.5" fill="#0D1B2A"/>
+              <text x="30" y="20" text-anchor="middle" fill="#00D4FF" font-size="7">Usuario</text>
+              <text x="95" y="20" text-anchor="middle" fill="#00D4FF" font-size="7">React</text>
+              <text x="160" y="20" text-anchor="middle" fill="#00D4FF" font-size="7">FastAPI</text>
+              <text x="225" y="20" text-anchor="middle" fill="#00FF9F" font-size="7">TF+MP</text>
+              <line x1="30" y1="22" x2="30" y2="175" stroke="#00D4FF" stroke-width="0.8" stroke-dasharray="3,3"/>
+              <line x1="95" y1="22" x2="95" y2="175" stroke="#00D4FF" stroke-width="0.8" stroke-dasharray="3,3"/>
+              <line x1="160" y1="22" x2="160" y2="175" stroke="#00D4FF" stroke-width="0.8" stroke-dasharray="3,3"/>
+              <line x1="225" y1="22" x2="225" y2="175" stroke="#00FF9F" stroke-width="0.8" stroke-dasharray="3,3"/>
+              <line x1="30" y1="40" x2="90" y2="40" stroke="#fff" stroke-width="1"/><polygon points="86,37 95,40 86,43" fill="#fff"/>
+              <text x="62" y="37" text-anchor="middle" fill="#ccc" font-size="6">activar cámara</text>
+              <line x1="95" y1="60" x2="155" y2="60" stroke="#fff" stroke-width="1"/><polygon points="151,57 160,60 151,63" fill="#fff"/>
+              <text x="127" y="57" text-anchor="middle" fill="#ccc" font-size="6">WS: frame JPEG</text>
+              <line x1="160" y1="80" x2="220" y2="80" stroke="#fff" stroke-width="1"/><polygon points="216,77 225,80 216,83" fill="#fff"/>
+              <text x="192" y="77" text-anchor="middle" fill="#ccc" font-size="6">detectar landmarks</text>
+              <line x1="225" y1="100" x2="165" y2="100" stroke="#00FF9F" stroke-width="1" stroke-dasharray="4,2"/><polygon points="169,97 160,100 169,103" fill="#00FF9F"/>
+              <text x="192" y="97" text-anchor="middle" fill="#00FF9F" font-size="6">etiqueta + confianza</text>
+              <line x1="160" y1="120" x2="100" y2="120" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4,2"/><polygon points="104,117 95,120 104,123" fill="#00D4FF"/>
+              <text x="127" y="117" text-anchor="middle" fill="#00D4FF" font-size="6">JSON: seña + %</text>
+              <line x1="95" y1="140" x2="35" y2="140" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4,2"/><polygon points="39,137 30,140 39,143" fill="#00D4FF"/>
+              <text x="62" y="137" text-anchor="middle" fill="#00D4FF" font-size="6">render + voz</text>
+            </svg>
+          </div>
+          <h3>Diagrama de Secuencia</h3>
+          <p>Flujo CU02 completo · 4 participantes</p>
+        </div>
+
+        <div class="diagram-card">
+          <div class="diagram-preview diagram-preview--deploy" aria-label="Diagrama de Despliegue">
+            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="1" width="278" height="178" rx="8" stroke="#00D4FF" stroke-width="1.5" fill="#0D1B2A"/>
+              <rect x="10" y="15" width="80" height="65" rx="4" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <text x="50" y="30" text-anchor="middle" fill="#00D4FF" font-size="8">Dispositivo</text>
+              <text x="50" y="42" text-anchor="middle" fill="#ccc" font-size="7">React 18 SPA</text>
+              <text x="50" y="52" text-anchor="middle" fill="#ccc" font-size="7">WebRTC</text>
+              <text x="50" y="62" text-anchor="middle" fill="#ccc" font-size="7">Web Speech API</text>
+              <rect x="100" y="15" width="80" height="80" rx="4" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <text x="140" y="30" text-anchor="middle" fill="#00D4FF" font-size="8">Servidor VPS</text>
+              <text x="140" y="43" text-anchor="middle" fill="#ccc" font-size="7">FastAPI + Uvicorn</text>
+              <text x="140" y="53" text-anchor="middle" fill="#ccc" font-size="7">MediaPipe 0.10</text>
+              <text x="140" y="63" text-anchor="middle" fill="#ccc" font-size="7">TFLite 2.x</text>
+              <text x="140" y="73" text-anchor="middle" fill="#ccc" font-size="7">PostgreSQL 15</text>
+              <text x="140" y="83" text-anchor="middle" fill="#ccc" font-size="7">Nginx</text>
+              <rect x="190" y="15" width="80" height="50" rx="4" stroke="#00FF9F" stroke-width="1.2" fill="#0a1520"/>
+              <text x="230" y="30" text-anchor="middle" fill="#00FF9F" font-size="8">GitHub Pages</text>
+              <text x="230" y="43" text-anchor="middle" fill="#ccc" font-size="7">Landing Page</text>
+              <text x="230" y="53" text-anchor="middle" fill="#ccc" font-size="7">Assets estáticos</text>
+              <rect x="70" y="120" width="80" height="35" rx="4" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
+              <text x="110" y="135" text-anchor="middle" fill="#00D4FF" font-size="8">GitHub Actions</text>
+              <text x="110" y="147" text-anchor="middle" fill="#ccc" font-size="7">CI/CD deploy.yml</text>
+              <line x1="90" y1="48" x2="100" y2="48" stroke="#00D4FF" stroke-width="1"/>
+              <text x="95" y="44" text-anchor="middle" fill="#888" font-size="6">WSS</text>
+              <line x1="180" y1="40" x2="190" y2="40" stroke="#00FF9F" stroke-width="1"/>
+              <text x="185" y="36" text-anchor="middle" fill="#888" font-size="6">CDN</text>
+              <line x1="110" y1="95" x2="110" y2="120" stroke="#00D4FF" stroke-width="1" stroke-dasharray="3,2"/>
+            </svg>
+          </div>
+          <h3>Diagrama de Despliegue</h3>
+          <p>3 nodos · cliente, servidor, GitHub CDN</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Preguntas Frecuentes</span>
+        <h2 class="section-title" id="faq-title">Resolvemos tus <span class="accent-cyan">dudas</span></h2>
+      </div>
+
+      <div class="faq-list reveal" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+            ¿Necesito hardware especializado para usar SignBridge AI?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-1" hidden>
+            <p>No. SignBridge AI funciona exclusivamente sobre hardware convencional: una cámara web estándar (integrada o USB) y un navegador moderno (Chrome 110+, Firefox 108+, Edge 110+, Safari 16+). No se requiere GPU, guantes instrumentados ni ningún dispositivo adicional.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+            ¿Mis imágenes de video se almacenan en algún servidor?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-2" hidden>
+            <p>No. Los frames de video procesados no se almacenan en disco (RNF-09). Solo los vectores de landmarks extraídos (63 valores float32 por frame) pueden persistirse en la base de datos, nunca la imagen en sí. Tu privacidad está garantizada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+            ¿Qué precisión tiene el modelo CNN de SignBridge AI?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-3" hidden>
+            <p>El modelo CNN alcanzó una precisión del <strong>93.7%</strong> sobre el conjunto de validación (2,500 muestras), superando el criterio de aceptación RF-03 establecido en ≥92%. Fue entrenado con 50,000 muestras de vectores de landmarks de la LSBO (2,000 por clase para 25 clases).</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+            ¿La síntesis de voz funciona sin conexión a internet?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-4" hidden>
+            <p>Sí. La síntesis de voz se implementa mediante la <strong>Web Speech API</strong> del navegador (SpeechSynthesis), que opera localmente en el dispositivo del usuario sin enviar datos a servidores externos. Esto garantiza privacidad y funcionamiento offline.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+            ¿SignBridge AI reconoce solo el alfabeto dactilológico?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-5" hidden>
+            <p>En la versión 1.0, el sistema reconoce el <strong>alfabeto dactilológico completo</strong> (26 letras) y un vocabulario básico de <strong>20 palabras de alta frecuencia</strong> (saludos, despedidas, números del 1 al 10 y señas de necesidad básica). El reconocimiento de señas continuas está planificado para versiones futuras.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+            ¿El proyecto es de código abierto?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-6" hidden>
+            <p>Sí. SignBridge AI se distribuye bajo <strong>licencia MIT</strong>, permitiendo su uso, modificación y distribución libre, incluso para fines comerciales. El código fuente completo está disponible en el repositorio GitHub del proyecto. Las instituciones educativas y de salud pueden desplegarlo sin costo alguno.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DOCUMENTACIÓN
+  ============================================================ -->
+  <section class="section section--dark" id="documentacion" aria-labelledby="docs-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Documentación Técnica</span>
+        <h2 class="section-title" id="docs-title">Descarga el <span class="accent-cyan">informe completo</span></h2>
+        <p class="section-desc">Informe Técnico Final — Hito 4 · UNIFRANZ 2026 · Adrián Darío Mamani Cutile</p>
+      </div>
+
+      <div class="docs-grid reveal">
+        <a href="docs/CAPITULO 1.pdf" class="doc-card" download aria-label="Descargar Capítulo 1: Marco Introductorio (PDF)">
+          <div class="doc-icon" aria-hidden="true">📄</div>
+          <div class="doc-info">
+            <span class="doc-chapter">Capítulo 1</span>
+            <h3>Marco Introductorio</h3>
+            <p>Introducción, antecedentes, planteamiento del problema, objetivo general y específicos, alcance y justificación.</p>
+          </div>
+          <span class="doc-download-btn">Descargar PDF ↓</span>
+        </a>
+
+        <a href="docs/CAPITULO 2.pdf" class="doc-card" download aria-label="Descargar Capítulo 2: Marco Teórico (PDF)">
+          <div class="doc-icon" aria-hidden="true">📄</div>
+          <div class="doc-info">
+            <span class="doc-chapter">Capítulo 2</span>
+            <h3>Marco Teórico</h3>
+            <p>IA, Machine Learning, Deep Learning, CNN, TensorFlow, MediaPipe, FastAPI, accesibilidad digital y LSBO.</p>
+          </div>
+          <span class="doc-download-btn">Descargar PDF ↓</span>
+        </a>
+
+        <a href="docs/CAPITULO 3.pdf" class="doc-card" download aria-label="Descargar Capítulo 3: Marco de Desarrollo (PDF)">
+          <div class="doc-icon" aria-hidden="true">📄</div>
+          <div class="doc-info">
+            <span class="doc-chapter">Capítulo 3</span>
+            <h3>Marco de Desarrollo</h3>
+            <p>Arquitectura, requerimientos, historias de usuario, casos de uso, diagramas UML, modelo ER, RTM, resultados.</p>
+          </div>
+          <span class="doc-download-btn">Descargar PDF ↓</span>
+        </a>
+
+        <a href="docs/04-06-2026 ISS INFORME FINAL H4.pdf" class="doc-card doc-card--featured" download aria-label="Descargar Documento Técnico Completo (PDF)">
+          <div class="doc-icon" aria-hidden="true">📚</div>
+          <div class="doc-info">
+            <span class="doc-chapter">Documento Completo</span>
+            <h3>Informe Técnico Completo</h3>
+            <p>Hito 4 completo: Marco Introductorio + Teórico + De Desarrollo + Conclusiones + Bibliografía APA 7.ª ed.</p>
+          </div>
+          <span class="doc-download-btn">Descargar PDF completo ↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ENTREGA ACADÉMICA
+  ============================================================ -->
+  <section class="section" id="entrega" aria-labelledby="entrega-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Entrega Académica</span>
+        <h2 class="section-title" id="entrega-title">Repositorio y <span class="accent-green">despliegue</span></h2>
+      </div>
+
+      <div class="delivery-grid reveal">
+        <div class="delivery-card">
+          <div class="delivery-icon" aria-hidden="true">
+            <img src="assets/img/github.svg" alt="" width="40" height="40" />
+          </div>
+          <h3>Repositorio GitHub</h3>
+          <p>Código fuente completo del proyecto SignBridge AI con historial de commits, ramas GitFlow y documentación.</p>
+          <a href="https://github.com/adrianmamani/signbridge-ai" class="delivery-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de SignBridge AI en GitHub (nueva pestaña)">
+            <span class="link-placeholder">https://github.com/adrianmamani/signbridge-ai</span>
+            <span class="link-icon">→</span>
+          </a>
+        </div>
+
+        <div class="delivery-card">
+          <div class="delivery-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#00D4FF" stroke-width="2"/><path d="M13 20c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7-7-3.13-7-7z" stroke="#00D4FF" stroke-width="1.5"/><path d="M20 13c0 0-4 3-4 7s4 7 4 7M20 13c0 0 4 3 4 7s-4 7-4 7M13 20h14" stroke="#00D4FF" stroke-width="1.2"/></svg>
+          </div>
+          <h3>GitHub Pages</h3>
+          <p>Landing Page pública del proyecto desplegada automáticamente via GitHub Actions CI/CD en cada push a main.</p>
+          <a href="https://adrianmamani.github.io/signbridge-ai/" class="delivery-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir sitio web desplegado de SignBridge AI (nueva pestaña)">
+            <span class="link-placeholder">https://adrianmamani.github.io/signbridge-ai/</span>
+            <span class="link-icon">→</span>
+          </a>
+        </div>
+
+        <div class="delivery-card delivery-card--docs">
+          <div class="delivery-icon" aria-hidden="true">📋</div>
+          <h3>Documentación</h3>
+          <div class="doc-links-list">
+            <a href="docs/Capitulo1.pdf" class="doc-link" download>📄 Capítulo 1 — Marco Introductorio</a>
+            <a href="docs/Capitulo2.pdf" class="doc-link" download>📄 Capítulo 2 — Marco Teórico</a>
+            <a href="docs/Capitulo3.pdf" class="doc-link" download>📄 Capítulo 3 — Marco de Desarrollo</a>
+            <a href="docs/DocumentoTecnicoCompleto.pdf" class="doc-link doc-link--featured" download>📚 Documento Técnico Completo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ficha académica -->
+      <div class="academic-card reveal" aria-labelledby="academic-title">
+        <h3 class="subsection-title" id="academic-title">Ficha Académica</h3>
+        <div class="academic-grid">
+          <div class="academic-item"><span class="academic-label">Estudiante</span><span class="academic-value">Adrián Darío Mamani Cutile</span></div>
+          <div class="academic-item"><span class="academic-label">Docente</span><span class="academic-value">Ing. Julio César Gómez Rodas</span></div>
+          <div class="academic-item"><span class="academic-label">Materia</span><span class="academic-value">Proyecto Integrador Intermedio I</span></div>
+          <div class="academic-item"><span class="academic-label">Hito</span><span class="academic-value">Hito 4 — Informe Técnico Final</span></div>
+          <div class="academic-item"><span class="academic-label">Universidad</span><span class="academic-value">UNIFRANZ — Facultad de Ingeniería</span></div>
+          <div class="academic-item"><span class="academic-label">Carrera</span><span class="academic-value">Ingeniería en Sistemas</span></div>
+          <div class="academic-item"><span class="academic-label">Año</span><span class="academic-value">2026 · La Paz — El Alto, Bolivia</span></div>
+          <div class="academic-item"><span class="academic-label">Licencia</span><span class="academic-value">MIT Open Source</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACTO
+  ============================================================ -->
+  <section class="section section--dark" id="contacto" aria-labelledby="contacto-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Contacto</span>
+        <h2 class="section-title" id="contacto-title">¿Tienes <span class="accent-cyan">preguntas</span>?</h2>
+        <p class="section-desc">Escríbenos. Tu mensaje se registra directamente en el sistema SignBridge AI via API REST.</p>
+      </div>
+
+      <div class="contact-layout reveal">
+        <form class="contact-form" id="contactForm" novalidate aria-labelledby="contacto-title">
+          <div class="form-group">
+            <label for="contactName" class="form-label">Nombre completo <span class="required" aria-label="campo requerido">*</span></label>
+            <input type="text" id="contactName" name="nombre" class="form-input" placeholder="Tu nombre completo" required autocomplete="name" aria-required="true" aria-describedby="nameError" />
+            <span class="form-error" id="nameError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail" class="form-label">Correo electrónico <span class="required" aria-label="campo requerido">*</span></label>
+            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="tu@email.com" required autocomplete="email" aria-required="true" aria-describedby="emailError" />
+            <span class="form-error" id="emailError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="contactInstitution" class="form-label">Institución / Organización</label>
+            <input type="text" id="contactInstitution" name="institucion" class="form-input" placeholder="Universidad, empresa u organización" autocomplete="organization" />
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage" class="form-label">Mensaje <span class="required" aria-label="campo requerido">*</span></label>
+            <textarea id="contactMessage" name="mensaje" class="form-textarea" placeholder="Escribe tu consulta, comentario o propuesta de colaboración..." required rows="5" aria-required="true" aria-describedby="messageError"></textarea>
+            <span class="form-error" id="messageError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+            <span class="btn-text">Enviar mensaje</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+            <span class="success-icon" aria-hidden="true">✓</span>
+            <div>
+              <strong>¡Mensaje enviado con éxito!</strong>
+              <p>Gracias por contactarnos. Tu mensaje ha sido registrado en nuestro sistema. Te responderemos pronto.</p>
+            </div>
+          </div>
+        </form>
+
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">🎓</span>
+            <div>
+              <strong>Proyecto Académico</strong>
+              <p>UNIFRANZ · Ingeniería en Sistemas<br/>Hito 4 — 2026</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">📍</span>
+            <div>
+              <strong>Ubicación</strong>
+              <p>La Paz — El Alto, Bolivia</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">💻</span>
+            <div>
+              <strong>API REST</strong>
+              <p>POST /contactos<br/>FastAPI · HTTP 201 Created</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">⚖️</span>
+            <div>
+              <strong>Licencia</strong>
+              <p>MIT Open Source<br/>Uso libre para educación y salud</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL
+  ============================================================ -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2 id="cta-title">Comunicación sin barreras.<br/><span class="gradient-text">Hoy. En Bolivia.</span></h2>
+        <p>SignBridge AI demuestra la viabilidad técnica y social de construir herramientas de inclusión con tecnología de código abierto, accesibles para todos.</p>
+        <div class="cta-actions">
+          <a href="#documentacion" class="btn btn-primary">Descargar Documentación</a>
+          <a href="https://github.com/adrianmamani/signbridge-ai" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver en GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="footer-logo" aria-label="SignBridge AI — Volver al inicio">
+            <img src="assets/img/logo.svg" alt="SignBridge AI" width="32" height="32" />
+            <span>SignBridge <strong>AI</strong></span>
+          </a>
+          <p>Sistema Inteligente de Reconocimiento y Traducción de Lengua de Señas Boliviana. Proyecto Integrador Intermedio I · UNIFRANZ 2026.</p>
+          <p class="footer-license">Licencia MIT · Código Abierto</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navegación del pie de página">
+          <h3>Secciones</h3>
+          <ul>
+            <li><a href="#proyecto">El Proyecto</a></li>
+            <li><a href="#problema">El Problema</a></li>
+            <li><a href="#metricas">Métricas</a></li>
+            <li><a href="#tecnologias">Tecnologías</a></li>
+            <li><a href="#arquitectura">Arquitectura</a></li>
+            <li><a href="#pipeline">Pipeline IA</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-label="Recursos del pie de página">
+          <h3>Recursos</h3>
+          <ul>
+            <li><a href="#diagramas">Diagramas UML</a></li>
+            <li><a href="#scrum">Metodología Scrum</a></li>
+            <li><a href="#accesibilidad">Accesibilidad</a></li>
+            <li><a href="#documentacion">Documentación</a></li>
+            <li><a href="#entrega">Entrega Académica</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-stack">
+          <h3>Stack Tecnológico</h3>
+          <div class="footer-tech-list">
+            <span>TensorFlow 2.x</span>
+            <span>MediaPipe 0.10</span>
+            <span>React 18</span>
+            <span>FastAPI</span>
+            <span>Python 3.11</span>
+            <span>PostgreSQL 15</span>
+            <span>GitHub Actions</span>
+            <span>WCAG 2.1 AA</span>
+          </div>
+          <div class="footer-links">
+            <a href="https://github.com/adrianmamani/signbridge-ai" target="_blank" rel="noopener noreferrer" aria-label="Repositorio GitHub de SignBridge AI">
+              <img src="assets/img/github.svg" alt="" width="22" height="22" aria-hidden="true" />GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 <strong>SignBridge AI</strong> · Adrián Darío Mamani Cutile · UNIFRANZ · Ingeniería en Sistemas</p>
+        <p>Desarrollado con ♥ para la comunidad sorda boliviana · La Paz — El Alto, Bolivia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver al inicio de la página" hidden>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M5 10l5-5 5 5" stroke="#0D1B2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/form.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

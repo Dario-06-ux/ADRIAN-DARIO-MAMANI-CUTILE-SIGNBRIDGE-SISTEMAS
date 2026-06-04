@@ -1,0 +1,17 @@
+# ============================================================
+# SIGNBRIDGE AI — robots.txt
+# Universidad Privada Franz Tamayo (UNIFRANZ)
+# Proyecto Integrador Intermedio I · Hito 4 · 2026
+# ============================================================
+
+User-agent: *
+Allow: /
+
+# Permite indexación de PDFs de documentación
+Allow: /docs/
+
+# Sitemap
+Sitemap: https://adrianmamani.github.io/signbridge-ai/sitemap.xml
+
+# Crawl delay (amigable con bots)
+Crawl-delay: 2

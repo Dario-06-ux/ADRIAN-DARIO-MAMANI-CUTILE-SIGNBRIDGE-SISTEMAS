@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <path d="M32 4L56 18V46L32 60L8 46V18L32 4Z" fill="#FF6F00" opacity="0.15"/>
+  <path d="M32 4L56 18V32L32 46V32L20 25V39L8 32V18L32 4Z" fill="#FF6F00" opacity="0.7"/>
+  <path d="M32 4V46L56 32V18L32 4Z" fill="#FF6F00" opacity="0.9"/>
+  <path d="M32 32L44 25V11L32 18V32Z" fill="#FFA000"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#FF6F00" font-weight="700">TF</text>
+</svg>

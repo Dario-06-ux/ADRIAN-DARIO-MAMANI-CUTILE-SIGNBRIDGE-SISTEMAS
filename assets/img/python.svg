@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Top half -->
+  <path d="M32 6C21 6 14 11 14 20V28H32V30H10C6 30 4 34 4 40C4 46 6 52 14 54C16 54.8 18 55 20 55V48C17 48 14 46 14 43V38H36V46C36 50 38 54 44 55C50 56 60 54 60 44V36C60 28 56 26 50 26H36V24H50C56 24 60 20 60 14C60 8 56 6 50 6H32Z" fill="#3776AB" opacity="0.9"/>
+  <!-- Bottom half -->
+  <path d="M32 58C43 58 50 53 50 44V36H32V34H54C58 34 60 30 60 24C60 18 58 12 50 10C48 9.2 46 9 44 9V16C47 16 50 18 50 21V26H28V18C28 14 26 10 20 9C14 8 4 10 4 20V28C4 36 8 38 14 38H28V40H14C8 40 4 44 4 50C4 56 8 58 14 58H32Z" fill="#FFD43B" opacity="0.85"/>
+  <!-- Eye dots -->
+  <circle cx="24" cy="18" r="3" fill="white"/>
+  <circle cx="40" cy="46" r="3" fill="#3776AB"/>
+</svg>
