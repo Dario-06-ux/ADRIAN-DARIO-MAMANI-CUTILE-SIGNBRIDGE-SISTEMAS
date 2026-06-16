@@ -142,45 +142,48 @@
 
   // ── Benefits Tabs ──────────────────────────────────────────
   function initTabs() {
-    const tabBtns   = document.querySelectorAll('.tab-btn');
-    const tabPanels = document.querySelectorAll('.tab-panel');
+    const containers = document.querySelectorAll('.benefits-tabs, .dynamic-docs-tabs');
+    containers.forEach(container => {
+      const tabBtns   = container.querySelectorAll('.tab-btn');
+      const tabPanels = container.querySelectorAll('.tab-panel');
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('aria-controls');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('aria-controls');
 
-        tabBtns.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
+          tabBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          tabPanels.forEach(p => {
+            p.classList.remove('active');
+            p.hidden = true;
+          });
+
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          const panel = container.querySelector('#' + target) || document.getElementById(target);
+          if (panel) {
+            panel.classList.add('active');
+            panel.hidden = false;
+          }
         });
-        tabPanels.forEach(p => {
-          p.classList.remove('active');
-          p.hidden = true;
+
+        // Keyboard navigation for tabs
+        btn.addEventListener('keydown', (e) => {
+          const buttons = [...tabBtns];
+          const index = buttons.indexOf(e.target);
+          if (e.key === 'ArrowRight') {
+            buttons[(index + 1) % buttons.length].focus();
+            buttons[(index + 1) % buttons.length].click();
+            e.preventDefault();
+          }
+          if (e.key === 'ArrowLeft') {
+            buttons[(index - 1 + buttons.length) % buttons.length].focus();
+            buttons[(index - 1 + buttons.length) % buttons.length].click();
+            e.preventDefault();
+          }
         });
-
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById(target);
-        if (panel) {
-          panel.classList.add('active');
-          panel.hidden = false;
-        }
-      });
-
-      // Keyboard navigation for tabs
-      btn.addEventListener('keydown', (e) => {
-        const buttons = [...tabBtns];
-        const index = buttons.indexOf(e.target);
-        if (e.key === 'ArrowRight') {
-          buttons[(index + 1) % buttons.length].focus();
-          buttons[(index + 1) % buttons.length].click();
-          e.preventDefault();
-        }
-        if (e.key === 'ArrowLeft') {
-          buttons[(index - 1 + buttons.length) % buttons.length].focus();
-          buttons[(index - 1 + buttons.length) % buttons.length].click();
-          e.preventDefault();
-        }
       });
     });
   }

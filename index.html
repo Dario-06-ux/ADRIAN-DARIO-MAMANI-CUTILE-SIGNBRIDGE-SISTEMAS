@@ -980,12 +980,13 @@
               <text x="105" y="44" fill="#ccc" font-size="6">+id_sesion: int</text>
               <text x="105" y="54" fill="#ccc" font-size="6">+fecha_inicio: DT</text>
               <text x="105" y="64" fill="#00FF9F" font-size="6">+exportar()</text>
-              <rect x="190" y="20" width="80" height="50" rx="3" stroke="#00FF9F" stroke-width="1.2" fill="#0a1520"/>
+              <rect x="190" y="20" width="80" height="58" rx="3" stroke="#00FF9F" stroke-width="1.2" fill="#0a1520"/>
               <line x1="190" y1="33" x2="270" y2="33" stroke="#00FF9F" stroke-width="0.8"/>
               <text x="230" y="30" text-anchor="middle" fill="#00FF9F" font-size="8" font-weight="bold">Contacto</text>
-              <text x="195" y="44" fill="#ccc" font-size="6">+nombre: String</text>
-              <text x="195" y="54" fill="#ccc" font-size="6">+email: String</text>
-              <text x="195" y="64" fill="#ccc" font-size="6">+mensaje: Text</text>
+              <text x="195" y="43" fill="#ccc" font-size="6">+nombre: String</text>
+              <text x="195" y="51" fill="#ccc" font-size="6">+email: String</text>
+              <text x="195" y="59" fill="#ccc" font-size="6">+institucion: String</text>
+              <text x="195" y="67" fill="#ccc" font-size="6">+mensaje: Text</text>
               <rect x="10" y="110" width="80" height="50" rx="3" stroke="#00D4FF" stroke-width="1.2" fill="#0a1520"/>
               <line x1="10" y1="123" x2="90" y2="123" stroke="#00D4FF" stroke-width="0.8"/>
               <text x="50" y="120" text-anchor="middle" fill="#00D4FF" font-size="8" font-weight="bold">Sena</text>
@@ -1149,16 +1150,163 @@
   <!-- ============================================================
        DOCUMENTACIÓN
   ============================================================ -->
-  <section class="section section--dark" id="documentacion" aria-labelledby="docs-title">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Documentación Técnica</span>
-        <h2 class="section-title" id="docs-title">Descarga el <span class="accent-cyan">informe completo</span></h2>
-        <p class="section-desc">Informe Técnico Final — Hito 4 · UNIFRANZ 2026 · Adrián Darío Mamani Cutile</p>
+      <!-- Estructura Dinámica del Documento Formal (Manual Técnico) -->
+      <div class="dynamic-docs-tabs reveal" style="margin-bottom: 48px;">
+        <h3 class="subsection-title" style="text-align: center; margin-bottom: 12px; color: var(--white); font-family: var(--font-display); font-size: 1.4rem;">Estructura Dinámica del Documento Formal (Manual Técnico)</h3>
+        <p style="text-align: center; color: var(--gray-400); font-size: 0.9rem; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+          Haga clic en las pestañas para explorar detalladamente el contenido de ingeniería requerido para cada capítulo del informe final y descargarlo directamente.
+        </p>
+
+        <div class="benefits-tabs" style="border: 1px solid rgba(0,212,255,0.12); background: var(--navy-mid); border-radius: var(--radius-xl); overflow: hidden;">
+          <div class="tabs-header" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="doc-cap1" id="btn-doc-cap1" style="border:none; padding: 16px;">Capítulo 1: Introductorio</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="doc-cap2" id="btn-doc-cap2" style="border:none; padding: 16px;">Capítulo 2: Teórico</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="doc-cap3" id="btn-doc-cap3" style="border:none; padding: 16px;">Capítulo 3: Desarrollo</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="doc-rtm" id="btn-doc-rtm" style="border:none; padding: 16px;">Matriz RTM Ajustada</button>
+          </div>
+
+          <!-- Capítulo 1 Panel -->
+          <div class="tab-panel active" id="doc-cap1" role="tabpanel" aria-labelledby="btn-doc-cap1" style="padding: 32px;">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div>
+                <h4 style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 12px; font-family: var(--font-display);">Capítulo 1: Marco Introductorio</h4>
+                <p style="color: var(--gray-200); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px;">
+                  Este capítulo establece las bases contextuales del problema identificado durante las investigaciones de campo en el Hito 2 para el desarrollo de la plataforma <strong>SignBridge AI</strong>.
+                </p>
+                <ul class="benefit-list" style="margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px;">
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>1.1. Introducción:</strong> Presentación del sector de tecnologías de inclusión y accesibilidad web. Alcances del sistema de reconocimiento de la Lengua de Señas Boliviana (LSBO) en tiempo real.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>1.2. Planteamiento del Problema:</strong> Análisis cuantitativo y cualitativo de la brecha de comunicación que afecta a ~120,000 personas con discapacidad auditiva en Bolivia, y la escasez crítica de intérpretes certificados.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>1.3. Objetivos:</strong>
+                    <ul style="padding-left: 20px; margin-top: 6px; list-style-type: circle; display: flex; flex-direction: column; gap: 4px; color: var(--gray-400);">
+                      <li><em>Objetivo General:</em> Desarrollar un sistema inteligente de traducción en tiempo real de la LSBO a texto y síntesis de voz mediante visión por computadora y Redes Neuronales Convolucionales (CNN).</li>
+                      <li><em>Objetivos Específicos:</em> Módulo de captura WebRTC, procesamiento y landmarks con MediaPipe Hands, clasificación neuronal con TensorFlow Lite, interfaz accesible WCAG 2.1 AA y validación mediante Landing Page.</li>
+                    </ul>
+                  </li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>1.4. Justificaciones:</strong> Exposición de motivos de impacto social (ODS 10), viabilidad económica (código abierto con hardware convencional) y relevancia académica en la ingeniería de sistemas.</li>
+                </ul>
+              </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <span style="font-size: 0.8rem; color: var(--gray-400);">Documento redactado de manera formal y profesional, con normas APA 7.ª ed.</span>
+                <a href="docs/Capitulo1.pdf" class="btn btn-primary" download style="padding: 10px 20px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                  Descargar Capítulo 1 (PDF) ↓
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capítulo 2 Panel -->
+          <div class="tab-panel" id="doc-cap2" role="tabpanel" aria-labelledby="btn-doc-cap2" hidden style="padding: 32px;">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div>
+                <h4 style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 12px; font-family: var(--font-display);">Capítulo 2: Marco Teórico</h4>
+                <p style="color: var(--gray-200); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px;">
+                  Sustento científico y tecnológico del proyecto, fundamentando las metodologías y frameworks seleccionados para el procesamiento inteligente de la LSBO.
+                </p>
+                <ul class="benefit-list" style="margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px;">
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>2.1. Inteligencia Artificial y Visión Artificial:</strong> Conceptos fundamentales de Deep Learning, Redes Neuronales Convolucionales (CNN) y extracción tridimensional de landmarks.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>2.2. Tecnologías de Detección:</strong> Funcionamiento de Google MediaPipe Hands (BlazePalm) para la extracción de 21 coordenadas espaciales (x, y, z) de la mano sin necesidad de guantes instrumentados.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>2.3. Herramientas de Inferencia:</strong> TensorFlow Lite para optimizar el modelo de clasificación de 25 señas dactilológicas y wss:// (WebSockets) para transmisión en tiempo real de baja latencia.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>2.4. Estándares de Accesibilidad:</strong> Pautas WCAG 2.1 nivel AA y la incorporación de APIs nativas del navegador como Web Speech API para la síntesis de voz local.</li>
+                </ul>
+              </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <span style="font-size: 0.8rem; color: var(--gray-400);">Documento redactado de manera formal y profesional, con normas APA 7.ª ed.</span>
+                <a href="docs/Capitulo2.pdf" class="btn btn-primary" download style="padding: 10px 20px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                  Descargar Capítulo 2 (PDF) ↓
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capítulo 3 Panel -->
+          <div class="tab-panel" id="doc-cap3" role="tabpanel" aria-labelledby="btn-doc-cap3" hidden style="padding: 32px;">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div>
+                <h4 style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 12px; font-family: var(--font-display);">Capítulo 3: Marco de Desarrollo</h4>
+                <p style="color: var(--gray-200); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px;">
+                  Detalle del proceso de ingeniería de software, diseño de arquitectura, diagramas de diseño e implementación del sistema SignBridge AI.
+                </p>
+                <ul class="benefit-list" style="margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px;">
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.1. Arquitectura del Sistema:</strong> Modelo Three-Tier detallando la comunicación asíncrona entre el cliente React 18 y el backend FastAPI con PostgreSQL.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.2. Metodología de Desarrollo:</strong> Adopción de Scrum con 5 Sprints, artefactos (Product Backlog, Sprint Backlog) y roles.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.3. Ingeniería de Requisitos e Historias de Usuario:</strong> Requisitos funcionales (RF-01 al RF-05) y no funcionales (RNF-01 al RNF-09) alineados con los criterios de aceptación.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.4. Diagramas UML y Modelo de Datos (DER):</strong> Especificación formal de Casos de Uso (CU01-CU07), Secuencia, Clases, Despliegue y el Modelo Entidad-Relación de base de datos.</li>
+                </ul>
+              </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <span style="font-size: 0.8rem; color: var(--gray-400);">Documento redactado de manera formal y profesional, con normas APA 7.ª ed.</span>
+                <a href="docs/Capitulo3.pdf" class="btn btn-primary" download style="padding: 10px 20px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                  Descargar Capítulo 3 (PDF) ↓
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matriz RTM Panel -->
+          <div class="tab-panel" id="doc-rtm" role="tabpanel" aria-labelledby="btn-doc-rtm" hidden style="padding: 32px;">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div>
+                <h4 style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 12px; font-family: var(--font-display);">Matriz de Trazabilidad de Requisitos (RTM)</h4>
+                <p style="color: var(--gray-200); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px;">
+                  Mapeo detallado que garantiza que cada requisito del sistema esté implementado en un módulo y validado mediante pruebas unitarias y de integración.
+                </p>
+                <div style="overflow-x: auto; margin-bottom: 16px;">
+                  <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.8rem; color: var(--gray-200); border: 1px solid rgba(0,212,255,0.15);">
+                    <thead>
+                      <tr style="background: rgba(0,212,255,0.1); border-bottom: 1.5px solid rgba(0,212,255,0.3); color: var(--cyan);">
+                        <th style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">ID Requisito</th>
+                        <th style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Descripción del Requisito</th>
+                        <th style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Caso de Uso Mapeado</th>
+                        <th style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Módulo Código</th>
+                        <th style="padding: 10px;">Estado de Verificación</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15); font-weight: bold; color: var(--green);">RF-01</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Captura de video en tiempo real (≥24 FPS)</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">CU-01: Iniciar Sesión</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">VideoCapture.jsx</td>
+                        <td style="padding: 10px; font-weight: bold; color: var(--green);">Verificado (100% OK)</td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.01);">
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15); font-weight: bold; color: var(--green);">RF-02</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Extracción de landmarks con MediaPipe (≥90%)</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">CU-02: Detectar Seña</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">HandExtractor.py</td>
+                        <td style="padding: 10px; font-weight: bold; color: var(--green);">Verificado (94.2% Tasa)</td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15); font-weight: bold; color: var(--green);">RF-03</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Clasificación del modelo CNN (Precisión ≥92%)</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">CU-02: Detectar Seña</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">SignClassifier.tflite</td>
+                        <td style="padding: 10px; font-weight: bold; color: var(--green);">Verificado (93.7% Prec.)</td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.01);">
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15); font-weight: bold; color: var(--green);">RF-04</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">Traducción a texto y voz (Latencia &lt;200ms)</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">CU-03, CU-04</td>
+                        <td style="padding: 10px; border-right: 1px solid rgba(0,212,255,0.15);">TranslationPanel.jsx</td>
+                        <td style="padding: 10px; font-weight: bold; color: var(--green);">Verificado (142ms Lat.)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <span style="font-size: 0.8rem; color: var(--gray-400);">Matriz RTM consolidada del Hito 4.</span>
+                <a href="docs/DocumentoTecnicoCompleto.pdf" class="btn btn-primary" download style="padding: 10px 20px; font-size: 0.85rem; border-radius: var(--radius-sm);">
+                  Descargar Manual Completo (PDF) ↓
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="docs-grid reveal">
-        <a href="docs/CAPITULO 1.pdf" class="doc-card" download aria-label="Descargar Capítulo 1: Marco Introductorio (PDF)">
+        <a href="docs/Capitulo1.pdf" class="doc-card" download aria-label="Descargar Capítulo 1: Marco Introductorio (PDF)">
           <div class="doc-icon" aria-hidden="true">📄</div>
           <div class="doc-info">
             <span class="doc-chapter">Capítulo 1</span>
@@ -1167,8 +1315,8 @@
           </div>
           <span class="doc-download-btn">Descargar PDF ↓</span>
         </a>
-
-        <a href="docs/CAPITULO 2.pdf" class="doc-card" download aria-label="Descargar Capítulo 2: Marco Teórico (PDF)">
+ 
+        <a href="docs/Capitulo2.pdf" class="doc-card" download aria-label="Descargar Capítulo 2: Marco Teórico (PDF)">
           <div class="doc-icon" aria-hidden="true">📄</div>
           <div class="doc-info">
             <span class="doc-chapter">Capítulo 2</span>
@@ -1177,8 +1325,8 @@
           </div>
           <span class="doc-download-btn">Descargar PDF ↓</span>
         </a>
-
-        <a href="docs/CAPITULO 3.pdf" class="doc-card" download aria-label="Descargar Capítulo 3: Marco de Desarrollo (PDF)">
+ 
+        <a href="docs/Capitulo3.pdf" class="doc-card" download aria-label="Descargar Capítulo 3: Marco de Desarrollo (PDF)">
           <div class="doc-icon" aria-hidden="true">📄</div>
           <div class="doc-info">
             <span class="doc-chapter">Capítulo 3</span>
@@ -1187,8 +1335,8 @@
           </div>
           <span class="doc-download-btn">Descargar PDF ↓</span>
         </a>
-
-        <a href="docs/04-06-2026 ISS INFORME FINAL H4.pdf" class="doc-card doc-card--featured" download aria-label="Descargar Documento Técnico Completo (PDF)">
+ 
+        <a href="docs/DocumentoTecnicoCompleto.pdf" class="doc-card doc-card--featured" download aria-label="Descargar Documento Técnico Completo (PDF)">
           <div class="doc-icon" aria-hidden="true">📚</div>
           <div class="doc-info">
             <span class="doc-chapter">Documento Completo</span>
@@ -1218,10 +1366,10 @@
           </div>
           <h3>Repositorio GitHub</h3>
           <p>Código fuente completo del proyecto SignBridge AI con historial de commits, ramas GitFlow y documentación.</p>
-          <a href="https://github.com/adrianmamani/signbridge-ai" class="delivery-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de SignBridge AI en GitHub (nueva pestaña)">
-            <span class="link-placeholder">https://github.com/adrianmamani/signbridge-ai</span>
+          <a href="https://github.com/Dario-06-ux/ADRIAN-DARIO-MAMANI-CUTILE-SIGNBRIDGE-SISTEMAS" class="delivery-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de SignBridge AI en GitHub (nueva pestaña)">
+            <span class="link-placeholder">https://github.com/Dario-06-ux/ADRIAN-DARIO-MAMANI-CUTILE-SIGNBRIDGE-SISTEMAS</span>
             <span class="link-icon">→</span>
-          </a>
+          </>
         </div>
 
         <div class="delivery-card">
@@ -1230,8 +1378,8 @@
           </div>
           <h3>GitHub Pages</h3>
           <p>Landing Page pública del proyecto desplegada automáticamente via GitHub Actions CI/CD en cada push a main.</p>
-          <a href="https://adrianmamani.github.io/signbridge-ai/" class="delivery-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir sitio web desplegado de SignBridge AI (nueva pestaña)">
-            <span class="link-placeholder">https://adrianmamani.github.io/signbridge-ai/</span>
+          <a href="https://dario-06-ux.github.io/ADRIAN-DARIO-MAMANI-CUTILE-SIGNBRIDGE-SISTEMAS/" class="delivery-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir sitio web desplegado de SignBridge AI (nueva pestaña)">
+            <span class="link-placeholder">https://dario-06-ux.github.io/ADRIAN-DARIO-MAMANI-CUTILE-SIGNBRIDGE-SISTEMAS/</span>
             <span class="link-icon">→</span>
           </a>
         </div>
@@ -1253,8 +1401,8 @@
         <h3 class="subsection-title" id="academic-title">Ficha Académica</h3>
         <div class="academic-grid">
           <div class="academic-item"><span class="academic-label">Estudiante</span><span class="academic-value">Adrián Darío Mamani Cutile</span></div>
-          <div class="academic-item"><span class="academic-label">Docente</span><span class="academic-value">Ing. Julio César Gómez Rodas</span></div>
-          <div class="academic-item"><span class="academic-label">Materia</span><span class="academic-value">Proyecto Integrador Intermedio I</span></div>
+          <div class="academic-item"><span class="academic-label">Docente</span><span class="academic-value">Ing. Javier Elvis Canqui Llusco</span></div>
+          <div class="academic-item"><span class="academic-label">Materia</span><span class="academic-value">Ingeniera de Sistemas</span></div>
           <div class="academic-item"><span class="academic-label">Hito</span><span class="academic-value">Hito 4 — Informe Técnico Final</span></div>
           <div class="academic-item"><span class="academic-label">Universidad</span><span class="academic-value">UNIFRANZ — Facultad de Ingeniería</span></div>
           <div class="academic-item"><span class="academic-label">Carrera</span><span class="academic-value">Ingeniería en Sistemas</span></div>
@@ -1359,7 +1507,7 @@
         <p>SignBridge AI demuestra la viabilidad técnica y social de construir herramientas de inclusión con tecnología de código abierto, accesibles para todos.</p>
         <div class="cta-actions">
           <a href="#documentacion" class="btn btn-primary">Descargar Documentación</a>
-          <a href="https://github.com/adrianmamani/signbridge-ai" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver en GitHub</a>
+          <a href="https://github.com/Dario-06-ux/ADRIAN-DARIO-MAMANI-CUTILE-SIGNBRIDGE-SISTEMAS" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver en GitHub</>
         </div>
       </div>
     </div>
