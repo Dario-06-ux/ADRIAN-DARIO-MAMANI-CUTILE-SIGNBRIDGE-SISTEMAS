@@ -962,6 +962,60 @@ p  { font-size: 1rem; color: var(--gray-200); }
 .form-textarea { resize: vertical; min-height: 120px; }
 .form-error { font-size: 0.78rem; color: var(--red); min-height: 16px; }
 
+/* select styling for dark theme */
+select.form-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300D4FF' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+select.form-input option {
+  background: var(--navy-mid);
+  color: var(--white);
+}
+
+/* ── DER Field Mapping annotations (Hito 4) ──────────────────── */
+.db-mapping {
+  display: block;
+  font-size: 0.71rem;
+  color: var(--green);
+  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  margin-top: 3px;
+  font-weight: 500;
+  opacity: 0.85;
+  letter-spacing: 0.01em;
+}
+
+.form-technical-note {
+  margin-top: 6px;
+  padding: 16px 18px;
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.12);
+  border-radius: var(--radius-sm);
+}
+.form-technical-note p {
+  font-size: 0.83rem;
+  color: var(--gray-200);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.form-technical-note code {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--cyan);
+  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,212,255,0.12);
+  border-radius: 4px;
+  overflow-x: auto;
+  line-height: 1.7;
+  white-space: pre;
+}
+
 .btn-submit { width: 100%; position: relative; overflow: hidden; }
 .btn-spinner {
   display: none;

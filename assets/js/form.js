@@ -1,45 +1,56 @@
 /* ============================================================
-   SIGNBRIDGE AI — FORM VALIDATION
-   form.js · Contact form with real-time validation
+   SIGNBRIDGE AI — USUARIO FORM VALIDATION
+   form.js · Registro de Usuario — Alineado con entidad DER
+   Hito 4 · UNIFRANZ 2026
    ============================================================ */
 
 (function () {
   'use strict';
 
-  function initContactForm() {
-    const form       = document.getElementById('contactForm');
+  /* ────────────────────────────────────────────────────────────
+     initUsuarioForm
+     Maneja el formulario de registro de usuario (#usuarioForm).
+     Cada campo corresponde a un atributo de la entidad Usuario
+     del Diagrama Entidad-Relación (DER) del sistema SignBridge AI.
+  ─────────────────────────────────────────────────────────────── */
+  function initUsuarioForm() {
+    const form           = document.getElementById('usuarioForm');
     if (!form) return;
 
-    const nameInput  = document.getElementById('contactName');
-    const emailInput = document.getElementById('contactEmail');
-    const msgInput   = document.getElementById('contactMessage');
-    const submitBtn  = document.getElementById('submitBtn');
-    const successDiv = document.getElementById('formSuccess');
+    const nombreInput    = document.getElementById('usuarioNombre');
+    const emailInput     = document.getElementById('usuarioEmail');
+    const contrasenaInput= document.getElementById('usuarioContrasena');
+    const idiomaSelect   = document.getElementById('usuarioIdioma');
+    const submitBtn      = document.getElementById('registroBtn');
+    const successDiv     = document.getElementById('formSuccess');
 
-    // ── Validators ───────────────────────────────────────────
+    // ── Validators: constraints aligned with Usuario entity ─────
+    // Usuario.nombre  → VARCHAR(100) NOT NULL
+    // Usuario.email   → VARCHAR(150) NOT NULL UNIQUE
+    // Usuario.contrasena → VARCHAR(255) NOT NULL (min 8 chars)
     const validators = {
       nombre(val) {
-        if (!val.trim()) return 'El nombre es requerido.';
-        if (val.trim().length < 2) return 'El nombre debe tener al menos 2 caracteres.';
-        if (val.trim().length > 100) return 'El nombre no puede exceder 100 caracteres.';
+        if (!val.trim()) return 'El nombre es requerido (Usuario.nombre).';
+        if (val.trim().length < 3)   return 'El nombre debe tener al menos 3 caracteres.';
+        if (val.trim().length > 100) return 'El nombre no puede exceder 100 caracteres (VARCHAR 100).';
         return '';
       },
       email(val) {
-        if (!val.trim()) return 'El correo electrónico es requerido.';
+        if (!val.trim()) return 'El correo es requerido (Usuario.email).';
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
         if (!re.test(val.trim())) return 'Ingresa un correo electrónico válido.';
-        if (val.trim().length > 150) return 'El correo no puede exceder 150 caracteres.';
+        if (val.trim().length > 150) return 'El correo no puede exceder 150 caracteres (VARCHAR 150).';
         return '';
       },
-      mensaje(val) {
-        if (!val.trim()) return 'El mensaje es requerido.';
-        if (val.trim().length < 10) return 'El mensaje debe tener al menos 10 caracteres.';
-        if (val.trim().length > 2000) return 'El mensaje no puede exceder 2000 caracteres.';
+      contrasena(val) {
+        if (!val.trim()) return 'La contraseña es requerida (Usuario.contrasena).';
+        if (val.trim().length < 8)   return 'La contraseña debe tener al menos 8 caracteres.';
+        if (val.trim().length > 255) return 'La contraseña no puede exceder 255 caracteres (VARCHAR 255).';
         return '';
       }
     };
 
-    // ── Show / hide error ────────────────────────────────────
+    // ── Show / hide error ────────────────────────────────────────
     function setError(input, errorId, message) {
       const errEl = document.getElementById(errorId);
       if (!errEl) return;
@@ -54,19 +65,19 @@
       }
     }
 
-    // ── Real-time validation (on blur) ───────────────────────
-    nameInput.addEventListener('blur', () => {
-      setError(nameInput, 'nameError', validators.nombre(nameInput.value));
+    // ── Real-time validation on blur ─────────────────────────────
+    nombreInput.addEventListener('blur', () => {
+      setError(nombreInput, 'nombreError', validators.nombre(nombreInput.value));
     });
     emailInput.addEventListener('blur', () => {
-      setError(emailInput, 'emailError', validators.email(emailInput.value));
+      setError(emailInput, 'emailUsuarioError', validators.email(emailInput.value));
     });
-    msgInput.addEventListener('blur', () => {
-      setError(msgInput, 'messageError', validators.mensaje(msgInput.value));
+    contrasenaInput.addEventListener('blur', () => {
+      setError(contrasenaInput, 'contrasenaError', validators.contrasena(contrasenaInput.value));
     });
 
     // Clear error on input
-    [nameInput, emailInput, msgInput].forEach(input => {
+    [nombreInput, emailInput, contrasenaInput].forEach(input => {
       input.addEventListener('input', () => {
         if (input.classList.contains('error')) {
           const errId = input.getAttribute('aria-describedby');
@@ -78,45 +89,53 @@
       });
     });
 
-    // ── Submit ───────────────────────────────────────────────
+    // ── Submit ───────────────────────────────────────────────────
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Validate all fields
-      const nameErr  = validators.nombre(nameInput.value);
-      const emailErr = validators.email(emailInput.value);
-      const msgErr   = validators.mensaje(msgInput.value);
+      // Validate all required fields
+      const nombreErr    = validators.nombre(nombreInput.value);
+      const emailErr     = validators.email(emailInput.value);
+      const contrasenaErr= validators.contrasena(contrasenaInput.value);
 
-      setError(nameInput,  'nameError',    nameErr);
-      setError(emailInput, 'emailError',   emailErr);
-      setError(msgInput,   'messageError', msgErr);
+      setError(nombreInput,    'nombreError',       nombreErr);
+      setError(emailInput,     'emailUsuarioError', emailErr);
+      setError(contrasenaInput,'contrasenaError',   contrasenaErr);
 
-      if (nameErr || emailErr || msgErr) {
-        // Focus first error
-        if (nameErr)  { nameInput.focus(); return; }
-        if (emailErr) { emailInput.focus(); return; }
-        if (msgErr)   { msgInput.focus(); return; }
+      if (nombreErr || emailErr || contrasenaErr) {
+        if (nombreErr)     { nombreInput.focus(); return; }
+        if (emailErr)      { emailInput.focus();  return; }
+        if (contrasenaErr) { contrasenaInput.focus(); return; }
         return;
       }
 
-      // Build payload
+      // ── Build payload aligned with entidad Usuario (DER) ───────
+      // Simula: INSERT INTO Usuario (nombre, email, contrasena, idioma_preferido, fecha_registro)
+      //         VALUES (?, ?, ?, ?, NOW())
       const payload = {
-        nombre:     nameInput.value.trim(),
-        email:      emailInput.value.trim(),
-        institucion: document.getElementById('contactInstitution')?.value?.trim() || '',
-        mensaje:    msgInput.value.trim(),
+        nombre:           nombreInput.value.trim(),       // Usuario.nombre    VARCHAR(100)
+        email:            emailInput.value.trim(),        // Usuario.email     VARCHAR(150)
+        contrasena:       contrasenaInput.value.trim(),   // Usuario.contrasena VARCHAR(255)
+        idioma_preferido: idiomaSelect.value,             // Usuario.idioma_preferido VARCHAR(10)
+        fecha_registro:   new Date().toISOString()        // Usuario.fecha_registro TIMESTAMP
       };
+
+      console.group('📊 SignBridge AI — Simulación INSERT en base de datos');
+      console.log('Entidad: Usuario');
+      console.log('SQL: INSERT INTO Usuario (nombre, email, contrasena, idioma_preferido, fecha_registro) VALUES (?, ?, ?, ?, NOW())');
+      console.log('Payload:', { ...payload, contrasena: '[HASH bcrypt]' });
+      console.groupEnd();
 
       // Show loading state
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
 
       try {
-        // Attempt real API call (POST /contactos)
         let success = false;
 
         try {
-          const resp = await fetch('https://signbridge-api.onrender.com/contactos', {
+          // Attempt real API call — POST /usuarios
+          const resp = await fetch('https://signbridge-api.onrender.com/usuarios', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -124,15 +143,16 @@
           });
           if (resp.ok || resp.status === 201) success = true;
         } catch (_networkErr) {
-          // API unreachable in static demo — simulate success for academic demo
-          await simulateDelay(900);
+          // API unreachable in static demo — simulate successful INSERT
+          await simulateDelay(1200);
           success = true;
+          console.log('✅ Demo: INSERT simulado exitosamente en entidad Usuario.');
         }
 
         if (success) {
           onSuccess();
         } else {
-          onError('El servidor no pudo procesar tu solicitud. Inténtalo nuevamente.');
+          onError('El servidor no pudo registrar el usuario. Inténtalo nuevamente.');
         }
 
       } catch (err) {
@@ -143,17 +163,20 @@
       }
     });
 
-    // ── Success handler ──────────────────────────────────────
+    // ── Success handler ──────────────────────────────────────────
     function onSuccess() {
       form.querySelectorAll('.form-group').forEach(g => { g.style.display = 'none'; });
       submitBtn.style.display = 'none';
+      const technicalNote = form.querySelector('.form-technical-note');
+      if (technicalNote) technicalNote.style.display = 'none';
       successDiv.hidden = false;
       successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       successDiv.focus();
+      console.log('✅ Usuario registrado exitosamente en la entidad Usuario de la base de datos SignBridge AI.');
       form.reset();
     }
 
-    // ── Error handler ────────────────────────────────────────
+    // ── Error handler ────────────────────────────────────────────
     function onError(msg) {
       const existing = form.querySelector('.form-submit-error');
       if (existing) existing.remove();
@@ -172,42 +195,18 @@
       `;
       errDiv.textContent = msg;
       submitBtn.insertAdjacentElement('afterend', errDiv);
-
       setTimeout(() => { errDiv.remove(); }, 6000);
     }
 
-    // ── Utility ──────────────────────────────────────────────
+    // ── Utility ──────────────────────────────────────────────────
     function simulateDelay(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
   }
 
-  // ── Character counter for textarea ──────────────────────────
-  function initCharCounter() {
-    const textarea = document.getElementById('contactMessage');
-    if (!textarea) return;
-
-    const counter = document.createElement('span');
-    counter.className = 'char-counter';
-    counter.setAttribute('aria-live', 'polite');
-    counter.style.cssText = 'font-size:0.72rem; color:var(--gray-600); text-align:right; display:block; margin-top:4px;';
-
-    textarea.parentNode.appendChild(counter);
-
-    function update() {
-      const len = textarea.value.length;
-      const max = 2000;
-      counter.textContent = `${len} / ${max}`;
-      counter.style.color = len > max * 0.9 ? 'var(--red)' : 'var(--gray-600)';
-    }
-    textarea.addEventListener('input', update);
-    update();
-  }
-
-  // ── Init ────────────────────────────────────────────────────
+  // ── Init ─────────────────────────────────────────────────────
   function init() {
-    initContactForm();
-    initCharCounter();
+    initUsuarioForm();
   }
 
   if (document.readyState === 'loading') {

@@ -88,7 +88,7 @@
         <li role="none"><a href="#casos-uso" class="nav-link" role="menuitem">Casos de Uso</a></li>
         <li role="none"><a href="#scrum" class="nav-link" role="menuitem">Scrum</a></li>
         <li role="none"><a href="#documentacion" class="nav-link" role="menuitem">Docs</a></li>
-        <li role="none"><a href="#contacto" class="nav-link nav-cta" role="menuitem">Contacto</a></li>
+        <li role="none"><a href="#registro-sistema" class="nav-link nav-cta" role="menuitem">Registrarse</a></li>
       </ul>
     </div>
   </nav>
@@ -1231,6 +1231,9 @@
                   <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.2. Metodología de Desarrollo:</strong> Adopción de Scrum con 5 Sprints, artefactos (Product Backlog, Sprint Backlog) y roles.</li>
                   <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.3. Ingeniería de Requisitos e Historias de Usuario:</strong> Requisitos funcionales (RF-01 al RF-05) y no funcionales (RNF-01 al RNF-09) alineados con los criterios de aceptación.</li>
                   <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.4. Diagramas UML y Modelo de Datos (DER):</strong> Especificación formal de Casos de Uso (CU01-CU07), Secuencia, Clases, Despliegue y el Modelo Entidad-Relación de base de datos.</li>
+                  <li style="color: var(--gray-200); font-size: 0.88rem; line-height: 1.5;"><strong>3.4.3. Mapeo Landing Page ↔ DER (Hito 4):</strong> El formulario de registro de la Landing Page está alineado conceptualmente con la entidad <strong style="color: var(--cyan);">Usuario</strong> del DER. Cada campo del formulario simula la inserción de un nuevo registro:<br/><br/>
+                    <code style="display: block; font-size: 0.75rem; color: var(--green); font-family: monospace; background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,159,0.15); border-radius: 6px; padding: 12px; margin-top: 8px; line-height: 1.8;">nombre (VARCHAR 100) ← input "Nombre completo"<br/>email (VARCHAR 150) ← input "Correo electrónico"<br/>contrasena (VARCHAR 255) ← input "Contraseña"<br/>idioma_preferido (VARCHAR 10) ← select "Idioma / Variante LSBO"<br/>fecha_registro (TIMESTAMP) ← generado automáticamente al submit<br/><br/>INSERT INTO Usuario (nombre, email, contrasena, idioma_preferido, fecha_registro)<br/>VALUES (?, ?, ?, ?, NOW())</code>
+                  </li>
                 </ul>
               </div>
               <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
@@ -1414,82 +1417,123 @@
   </section>
 
   <!-- ============================================================
-       CONTACTO
+       REGISTRO DE USUARIO — Formulario alineado con el DER (Hito 4)
+       Entidad: Usuario | Operación: INSERT INTO Usuario
   ============================================================ -->
-  <section class="section section--dark" id="contacto" aria-labelledby="contacto-title">
+  <section class="section section--dark" id="registro-sistema" aria-labelledby="registro-title">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Contacto</span>
-        <h2 class="section-title" id="contacto-title">¿Tienes <span class="accent-cyan">preguntas</span>?</h2>
-        <p class="section-desc">Escríbenos. Tu mensaje se registra directamente en el sistema SignBridge AI via API REST.</p>
+        <span class="section-tag">Registro de Usuario · Entidad DER</span>
+        <h2 class="section-title" id="registro-title">Únete a <span class="accent-cyan">SignBridge AI</span></h2>
+        <p class="section-desc">
+          Regístrate para acceder al sistema de traducción de Lengua de Señas Boliviana en tiempo real.
+          <br />
+          <span style="display:inline-block; margin-top:10px; font-size:0.82rem; color:var(--cyan); font-family:monospace;">Entidad: <strong>Usuario</strong> · Operación: <strong>INSERT INTO Usuario (...)</strong></span>
+        </p>
       </div>
 
       <div class="contact-layout reveal">
-        <form class="contact-form" id="contactForm" novalidate aria-labelledby="contacto-title">
+        <!-- ── Formulario: campos mapeados a entidad Usuario del DER ── -->
+        <form class="contact-form" id="usuarioForm" novalidate aria-labelledby="registro-title">
+
+          <!-- Campo: nombre → Usuario.nombre (VARCHAR 100) -->
           <div class="form-group">
-            <label for="contactName" class="form-label">Nombre completo <span class="required" aria-label="campo requerido">*</span></label>
-            <input type="text" id="contactName" name="nombre" class="form-input" placeholder="Tu nombre completo" required autocomplete="name" aria-required="true" aria-describedby="nameError" />
-            <span class="form-error" id="nameError" role="alert" aria-live="polite"></span>
+            <label for="usuarioNombre" class="form-label">
+              Nombre completo <span class="required" aria-label="campo requerido">*</span>
+              <small class="db-mapping">↳ Usuario.nombre (VARCHAR 100)</small>
+            </label>
+            <input type="text" id="usuarioNombre" name="nombre" class="form-input"
+                   placeholder="Tu nombre completo" required autocomplete="name"
+                   aria-required="true" aria-describedby="nombreError" />
+            <span class="form-error" id="nombreError" role="alert" aria-live="polite"></span>
           </div>
 
+          <!-- Campo: email → Usuario.email (VARCHAR 150) -->
           <div class="form-group">
-            <label for="contactEmail" class="form-label">Correo electrónico <span class="required" aria-label="campo requerido">*</span></label>
-            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="tu@email.com" required autocomplete="email" aria-required="true" aria-describedby="emailError" />
-            <span class="form-error" id="emailError" role="alert" aria-live="polite"></span>
+            <label for="usuarioEmail" class="form-label">
+              Correo electrónico <span class="required" aria-label="campo requerido">*</span>
+              <small class="db-mapping">↳ Usuario.email (VARCHAR 150)</small>
+            </label>
+            <input type="email" id="usuarioEmail" name="email" class="form-input"
+                   placeholder="tu@email.com" required autocomplete="email"
+                   aria-required="true" aria-describedby="emailUsuarioError" />
+            <span class="form-error" id="emailUsuarioError" role="alert" aria-live="polite"></span>
           </div>
 
+          <!-- Campo: contrasena → Usuario.contrasena (VARCHAR 255) -->
           <div class="form-group">
-            <label for="contactInstitution" class="form-label">Institución / Organización</label>
-            <input type="text" id="contactInstitution" name="institucion" class="form-input" placeholder="Universidad, empresa u organización" autocomplete="organization" />
+            <label for="usuarioContrasena" class="form-label">
+              Contraseña <span class="required" aria-label="campo requerido">*</span>
+              <small class="db-mapping">↳ Usuario.contrasena (VARCHAR 255)</small>
+            </label>
+            <input type="password" id="usuarioContrasena" name="contrasena" class="form-input"
+                   placeholder="Mínimo 8 caracteres" required autocomplete="new-password"
+                   minlength="8" aria-required="true" aria-describedby="contrasenaError" />
+            <span class="form-error" id="contrasenaError" role="alert" aria-live="polite"></span>
           </div>
 
+          <!-- Campo: idioma_preferido → Usuario.idioma_preferido (VARCHAR 10) -->
           <div class="form-group">
-            <label for="contactMessage" class="form-label">Mensaje <span class="required" aria-label="campo requerido">*</span></label>
-            <textarea id="contactMessage" name="mensaje" class="form-textarea" placeholder="Escribe tu consulta, comentario o propuesta de colaboración..." required rows="5" aria-required="true" aria-describedby="messageError"></textarea>
-            <span class="form-error" id="messageError" role="alert" aria-live="polite"></span>
+            <label for="usuarioIdioma" class="form-label">
+              Idioma / Variante de señas
+              <small class="db-mapping">↳ Usuario.idioma_preferido (VARCHAR 10)</small>
+            </label>
+            <select id="usuarioIdioma" name="idioma_preferido" class="form-input" autocomplete="language">
+              <option value="es-LSBO">Español · LSBO (Lengua de Señas Boliviana)</option>
+              <option value="en-ASL">English · ASL (American Sign Language)</option>
+              <option value="pt-LIBRAS">Português · Libras (Língua Brasileira de Sinais)</option>
+            </select>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
-            <span class="btn-text">Enviar mensaje</span>
+          <button type="submit" class="btn btn-primary btn-submit" id="registroBtn">
+            <span class="btn-text">Registrar Usuario en SignBridge AI</span>
             <span class="btn-spinner" aria-hidden="true"></span>
           </button>
 
-          <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+          <!-- Nota técnica: mapeo explícito DER -->
+          <div class="form-technical-note">
+            <p>💡 <strong>Nota Técnica DER — Hito 4:</strong> Al enviar este formulario, se simula la operación:</p>
+            <code>INSERT INTO Usuario (nombre, email, contrasena, idioma_preferido, fecha_registro)
+VALUES (?, ?, ?, ?, NOW())</code>
+          </div>
+
+          <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden tabindex="-1">
             <span class="success-icon" aria-hidden="true">✓</span>
             <div>
-              <strong>¡Mensaje enviado con éxito!</strong>
-              <p>Gracias por contactarnos. Tu mensaje ha sido registrado en nuestro sistema. Te responderemos pronto.</p>
+              <strong>¡Usuario registrado exitosamente!</strong>
+              <p>Tu cuenta ha sido insertada en la entidad <strong>Usuario</strong> de la base de datos SignBridge AI. Pronto podrás iniciar sesiones de traducción de LSBO.</p>
             </div>
           </div>
         </form>
 
+        <!-- ── Panel informativo: mapeo DER + datos del sistema ── -->
         <div class="contact-info">
           <div class="contact-info-item">
-            <span class="contact-info-icon" aria-hidden="true">🎓</span>
+            <span class="contact-info-icon" aria-hidden="true">🗄️</span>
             <div>
-              <strong>Proyecto Académico</strong>
-              <p>UNIFRANZ · Ingeniería en Sistemas<br/>Hito 4 — 2026</p>
+              <strong>Entidad de Base de Datos</strong>
+              <p>Tabla: <code style="color:var(--cyan); font-family:monospace;">Usuario</code><br/>Motor: PostgreSQL 15 (prod)<br/>ORM: SQLAlchemy</p>
             </div>
           </div>
           <div class="contact-info-item">
-            <span class="contact-info-icon" aria-hidden="true">📍</span>
+            <span class="contact-info-icon" aria-hidden="true">🔗</span>
             <div>
-              <strong>Ubicación</strong>
-              <p>La Paz — El Alto, Bolivia</p>
+              <strong>Endpoint API REST</strong>
+              <p><code style="color:var(--green); font-family:monospace;">POST /usuarios</code><br/>FastAPI · HTTP 201 Created<br/>Validación: Pydantic v2</p>
             </div>
           </div>
           <div class="contact-info-item">
-            <span class="contact-info-icon" aria-hidden="true">💻</span>
+            <span class="contact-info-icon" aria-hidden="true">🤝</span>
             <div>
-              <strong>API REST</strong>
-              <p>POST /contactos<br/>FastAPI · HTTP 201 Created</p>
+              <strong>Caso de Uso Validado</strong>
+              <p>CU-01: Iniciar Sesión de Traducción<br/>CU-07: Configurar Preferencias<br/>Hito 4 · UNIFRANZ 2026</p>
             </div>
           </div>
           <div class="contact-info-item">
-            <span class="contact-info-icon" aria-hidden="true">⚖️</span>
+            <span class="contact-info-icon" aria-hidden="true">🔒</span>
             <div>
-              <strong>Licencia</strong>
-              <p>MIT Open Source<br/>Uso libre para educación y salud</p>
+              <strong>Seguridad</strong>
+              <p>Contraseña hasheada con bcrypt<br/>HTTPS/TLS en producción<br/>WCAG 2.1 AA accesible</p>
             </div>
           </div>
         </div>
@@ -1549,6 +1593,7 @@
             <li><a href="#documentacion">Documentación</a></li>
             <li><a href="#entrega">Entrega Académica</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="#registro-sistema">Registrarse</a></li>
           </ul>
         </nav>
 
